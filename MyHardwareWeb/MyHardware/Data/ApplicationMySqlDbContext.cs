@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyHardware.Interfaces;
+using MyHardware.Models;
 
 namespace MyHardware.Data
 {
@@ -18,15 +19,16 @@ namespace MyHardware.Data
                       ServerVersion.AutoDetect(_configuration.GetConnectionString("DefaultConnection")));
         }
 
-        public DbSet<Product> Product { get; set; }
-        public DbSet<Contact> Contact { get; set; }
-        public DbSet<Supplier> Supplier { get; set; }
-        public DbSet<Supplier_Product> Supplier_Product { get; set; }
+        public DbSet<Product>? Product { get; set; }
+        public DbSet<Adress>? Adress { get; set; }
+        public DbSet<Customer>? Customer { get; set; }
+        public DbSet<SupplierProduct>? SupplierProduct { get; set; }
+        public DbSet<User>? User { get; set; }
+        public DbSet<SupplierProductCustomer>? SupplierProductCustomer { get; set; }
 
         public int Save()
         {
             return SaveChanges();
         }
     }
-}
 }

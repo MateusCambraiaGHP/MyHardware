@@ -4,45 +4,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using OfficeOpenXml;
+using MyHardware.Repository;
+using MyHardware.ViewModel;
 
 namespace MyHardware.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IApplicationDbContext _db;
         private readonly IProducExcelService _excelService;
+        private readonly IProductRepository _productRepository;
 
         public ProductController(
-            IApplicationDbContext db,
-            IProducExcelService excelService)
+            IProducExcelService excelService,
+            IProductRepository productRepository)
         {
-            _db = db;
+            _productRepository = productRepository;
             _excelService = excelService;
-        }
-
-        public IActionResult GetProductId(int id)
-        {
-            var productFromDb = _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
-            return Ok( new { productFromDb?.Price, productFromDb?.Description });
-        }
-
-        public IActionResult GetAllProduct()
-        {
-            IEnumerable<Product> producsObj = _db.Product.ToList();
-            return Ok(producsObj);
-        }
-
-        public async Task<IActionResult> Export()
-        {
-            IEnumerable<Product> products = _db.Product.ToList();
-            await _excelService.ExportToExcel(products, "C:/ProjetosMateusPadraoMvc/MathDrinksWeb/MathDrinks/excel", "products");
-
-            return Ok();
         }
 
         public IActionResult Index()
         {
-            IEnumerable<Product> producsObj = _db.Product.ToList();
+            var producsObj = _productRepository.GetAllProduct();
             return View(producsObj);
         }
 
@@ -53,11 +35,10 @@ namespace MyHardware.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Product obj)
+        public IActionResult Create(Product productModel)
         {
             if (ModelState.IsValid)
-              _db.Product.Add(obj);
-            _db.Save();
+                _productRepository.CreateProduct(productModel);
             TempData["success"] = "Produto criado com sucesso.";
             return RedirectToAction("Index");
         }
