@@ -6,7 +6,9 @@ namespace MyHardware.Repository
 {
     public interface IProductRepository 
     {
-        public Task<Product> CreateProduct(Product productModel);
+        public Task InsertProductFromDatabase(Product productModel);
+        public Product UpdateProductFromDatabase(Product productModel);
+        public Task<Product> FindProductById(int id);
         public Task<IEnumerable<Product>>  GetAllProduct();
     }
     public class ProductRepository : IProductRepository
@@ -22,13 +24,23 @@ namespace MyHardware.Repository
             _excelService = excelService;
         }
 
-        public async Task<Product> CreateProduct(Product productModel)
+        public async Task InsertProductFromDatabase(Product productModel)
         {
             await _db.Product.AddAsync(productModel);
+            _db.Save();
+        }
+
+        public Product UpdateProductFromDatabase(Product productModel)
+        {
+            _db.Product.Update(productModel);
             _db.Save();
             return productModel;
         }
 
+        public async Task<Product> FindProductById(int id) {
+            var productFromDb = await _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefaultAsync();
+            return productFromDb;
+        }
         //public async Task GetProductId(int id)
         //{
         //    var productFromDb = await _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefaultAsync();

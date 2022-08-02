@@ -38,7 +38,7 @@ namespace MyHardware.Controllers
         public IActionResult Create(Product productModel)
         {
             if (ModelState.IsValid)
-                _productRepository.CreateProduct(productModel);
+                _productRepository.InsertProductFromDatabase(productModel);
             TempData["success"] = "Produto criado com sucesso.";
             return RedirectToAction("Index");
         }
@@ -50,7 +50,7 @@ namespace MyHardware.Controllers
                 return NotFound();
             }
 
-            var productFromDb = _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
+            var productFromDb = _productRepository.FindProductById(id);
             if (productFromDb == null)
             {
                 return NotFound();
@@ -60,11 +60,10 @@ namespace MyHardware.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Product obj)
+        public IActionResult Edit(Product productModel)
         {
             if (ModelState.IsValid)
-                _db.Product.Update(obj);
-            _db.Save();
+                _productRepository.UpdateProductFromDatabase(productModel);
             TempData["success"] = "Produto editado com sucesso.";
             return RedirectToAction("Index");
         }
