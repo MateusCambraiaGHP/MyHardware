@@ -19,12 +19,12 @@ namespace MyHardware.Data
                       ServerVersion.AutoDetect(_configuration.GetConnectionString("DefaultConnection")));
         }
 
-        public DbSet<Product>? Product { get; set; }
-        public DbSet<Adress>? Adress { get; set; }
-        public DbSet<Customer>? Customer { get; set; }
-        public DbSet<SupplierProduct>? SupplierProduct { get; set; }
-        public DbSet<User>? User { get; set; }
-        public DbSet<SupplierProductCustomer>? SupplierProductCustomer { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Adress> Adress { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<SupplierProduct> SupplierProduct { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<SupplierProductCustomer> SupplierProductCustomer { get; set; }
 
         public int Save()
         {

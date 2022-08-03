@@ -18,7 +18,5 @@ namespace MyHardware.Repository
             _db = db;
             _excelService = excelService;
         }
-
-
     }
 }

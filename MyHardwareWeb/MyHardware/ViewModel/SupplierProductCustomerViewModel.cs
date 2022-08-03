@@ -11,9 +11,9 @@ namespace MyHardware.ViewModel
         public int CustomerId { get; set; }
         public int PurcashePrice { get; set; }
         public int PurcasheQuantity { get; set; }
-        public Supplier? supplier { get; set; }
-        public Product? product { get; set; }
-        public Customer? customer { get; set; }
+        public Supplier supplier { get; set; }
+        public Product product { get; set; }
+        public Customer customer { get; set; }
 
         [Column(TypeName = "datetime")]
         public DateTime PurchaseData { get; set; }

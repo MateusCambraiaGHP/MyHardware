@@ -8,6 +8,12 @@
             public const string Inactive = "0";
         }
 
+        public class DefaultValue
+        {
+            public const int Active = 1;
+            public const int Inactive = 0;
+        }
+
         public class ProductType
         {
             public const string PersonalComputer = "1";
