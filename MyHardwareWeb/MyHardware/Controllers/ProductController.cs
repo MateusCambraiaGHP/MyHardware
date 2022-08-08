@@ -1,31 +1,28 @@
-﻿using MyHardware.Interfaces;
-using MyHardware.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Data;
-using OfficeOpenXml;
+﻿using Microsoft.AspNetCore.Mvc;
 using MyHardware.Repository;
+using static MyHardware.Utility.Constants;
 using MyHardware.ViewModel;
+using AutoMapper;
+using MyHardware.Models;
 
 namespace MyHardware.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IProducExcelService _excelService;
         private readonly IProductRepository _productRepository;
+        private readonly IMapper _mapper;
 
-        public ProductController(
-            IProducExcelService excelService,
-            IProductRepository productRepository)
+        public ProductController(IProductRepository productRepository,
+            IMapper mapper)
         {
+            _mapper = mapper;
             _productRepository = productRepository;
-            _excelService = excelService;
         }
 
         public IActionResult Index()
         {
-            var producsObj = _productRepository.GetAllProduct();
-            return View(producsObj);
+            var allProducts = _productRepository.GetAllProduct();
+            return View(allProducts);
         }
 
         public IActionResult Create()
@@ -33,72 +30,49 @@ namespace MyHardware.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("save")]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Product productModel)
+        public IActionResult Save(ProductViewModel productModel)
         {
             if (ModelState.IsValid)
-                _productRepository.CreateProduct(productModel);
-            TempData["success"] = "Produto criado com sucesso.";
+                //_productRepository.InsertProductFromDatabase(productModel);
+                TempData["success"] = "Produto criado com sucesso.";
             return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
         {
-            if (id == 0)
+            if (id == DefaultValue.Inactive)
             {
                 return NotFound();
             }
-
-            var productFromDb = _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
-            if (productFromDb == null)
+            var currentProduct = _productRepository.FindProductById(id);
+            if (currentProduct == null)
             {
                 return NotFound();
             }
-            return View(productFromDb);
+            return View("ProductViewModel", currentProduct);
         }
 
-        [HttpPost]
+        [HttpPost("edit")]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Product obj)
+        public IActionResult Edit(ProductViewModel productModel)
         {
             if (ModelState.IsValid)
-                _db.Product.Update(obj);
-            _db.Save();
-            TempData["success"] = "Produto editado com sucesso.";
+            {
+                var productMap = _mapper.Map<ProductViewModel, Product>(productModel);
+                _productRepository.UpdateProductFromDatabase(productMap);
+            }
+            TempData["success"] = "Produto alterado com sucesso.";
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(int id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-
-            var productFromDb = _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
-            if (productFromDb == null)
-            {
-                return NotFound();
-            }
-            return View(productFromDb);
-        }
-
-        [HttpPost]
+        [HttpGet("export")]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int? id)
+        public IActionResult Export()
         {
-            var obj = _db.Product.AsNoTracking().Where(c => c.Id == id).FirstOrDefault();
-            if (obj == null)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-                _db.Product.Remove(obj);
-            _db.Save();
-            TempData["success"] = "Produto deletado com sucesso.";
-            return RedirectToAction("Index");
+            _productRepository.ExportAllProducts();
+            return Ok();
         }
     }
 }

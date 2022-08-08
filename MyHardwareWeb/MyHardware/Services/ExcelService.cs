@@ -25,7 +25,6 @@ namespace MyHardware.Services
         {
             if (file.Exists)
                 file.Delete();
-
             await SaveExcelFile(entityList, file);
         }
     }
