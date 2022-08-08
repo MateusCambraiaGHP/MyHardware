@@ -1,6 +1,7 @@
 using MyHardware.Data;
 using MyHardware.Interfaces;
 using MyHardware.Services;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IApplicationDbContext, ApplicationMySqlDbContext>();
 builder.Services.AddScoped<IProducExcelService, ProductExcelService>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 
 var app = builder.Build();
 

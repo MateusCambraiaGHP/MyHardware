@@ -2,15 +2,20 @@
 using MyHardware.Repository;
 using static MyHardware.Utility.Constants;
 using MyHardware.ViewModel;
+using AutoMapper;
+using MyHardware.Models;
 
 namespace MyHardware.Controllers
 {
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;
+        private readonly IMapper _mapper;
 
-        public ProductController(IProductRepository productRepository)
+        public ProductController(IProductRepository productRepository,
+            IMapper mapper)
         {
+            _mapper = mapper;
             _productRepository = productRepository;
         }
 
@@ -30,8 +35,8 @@ namespace MyHardware.Controllers
         public IActionResult Save(ProductViewModel productModel)
         {
             if (ModelState.IsValid)
-                _productRepository.InsertProductFromDatabase(productModel);
-            TempData["success"] = "Produto criado com sucesso.";
+                //_productRepository.InsertProductFromDatabase(productModel);
+                TempData["success"] = "Produto criado com sucesso.";
             return RedirectToAction("Index");
         }
 
@@ -54,7 +59,10 @@ namespace MyHardware.Controllers
         public IActionResult Edit(ProductViewModel productModel)
         {
             if (ModelState.IsValid)
-                _productRepository.UpdateProductFromDatabase(productModel);
+            {
+                var productMap = _mapper.Map<ProductViewModel, Product>(productModel);
+                _productRepository.UpdateProductFromDatabase(productMap);
+            }
             TempData["success"] = "Produto alterado com sucesso.";
             return RedirectToAction("Index");
         }
