@@ -7,16 +7,16 @@ using MyHardware.Models;
 
 namespace MyHardware.Controllers
 {
-    public class ProductController : Controller
+    public class CustomerController : Controller
     {
-        private readonly IProductRepository _productRepository;
+        private readonly ICustomerRepository _customerRepository;
         private readonly IMapper _mapper;
 
-        public ProductController(IProductRepository productRepository,
+        public CustomerController(ICustomerRepository customerRepository,
             IMapper mapper)
         {
             _mapper = mapper;
-            _productRepository = productRepository;
+            _customerRepository = customerRepository;
         }
 
         public IActionResult Index()
@@ -35,12 +35,8 @@ namespace MyHardware.Controllers
         public IActionResult Save(ProductViewModel productModel)
         {
             if (ModelState.IsValid)
-            {
-                var productMap = _mapper.Map<ProductViewModel, Product>(productModel);
-                _productRepository.Create(productMap);
-            }
-
-            TempData["success"] = "Produto criado com sucesso.";
+                //_productRepository.InsertProductFromDatabase(productModel);
+                TempData["success"] = "Produto criado com sucesso.";
             return RedirectToAction("Index");
         }
 
@@ -65,7 +61,7 @@ namespace MyHardware.Controllers
             if (ModelState.IsValid)
             {
                 var productMap = _mapper.Map<ProductViewModel, Product>(productModel);
-                _productRepository.Update(productMap);
+                _productRepository.UpdateProductFromDatabase(productMap);
             }
             TempData["success"] = "Produto alterado com sucesso.";
             return RedirectToAction("Index");

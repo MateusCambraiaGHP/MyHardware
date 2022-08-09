@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IApplicationDbContext, ApplicationMySqlDbContext>();
-builder.Services.AddScoped<IProducExcelService, ProductExcelService>();
+builder.Services.AddScoped<IProductExcelService, ProductExcelService>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
