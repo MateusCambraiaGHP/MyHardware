@@ -9,11 +9,11 @@ namespace MyHardware.Repository
     public class SupplierRepository : ISupplierRepository
     {
         private readonly IApplicationDbContext _db;
-        private readonly IProducExcelService _excelService;
+        private readonly IProductExcelService _excelService;
 
         public SupplierRepository(
             IApplicationDbContext db,
-            IProducExcelService excelService)
+            IProductExcelService excelService)
         {
             _db = db;
             _excelService = excelService;

@@ -2,22 +2,21 @@
 
 namespace MyHardware.Repository
 {
-    public interface IUserRepository
+    public interface ISupplierProductCustomerRepository
     { 
         
     }
-    public class UserRepository : IUserRepository
+    public class SupplierProductCustomerRepository : ISupplierProductCustomerRepository
     {
         private readonly IApplicationDbContext _db;
         private readonly IProductExcelService _excelService;
 
-        public UserRepository(
+        public SupplierProductCustomerRepository(
             IApplicationDbContext db,
             IProductExcelService excelService)
         {
             _db = db;
             _excelService = excelService;
         }
-
     }
 }
