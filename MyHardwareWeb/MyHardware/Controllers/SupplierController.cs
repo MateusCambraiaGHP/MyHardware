@@ -21,7 +21,7 @@ namespace MyHardware.Controllers
 
         public IActionResult Index()
         {
-            var allProducts = _productRepository.GetAllProduct();
+            var allProducts = _supplierRepository.GetAllSupplier();
             return View(allProducts);
         }
 
@@ -35,8 +35,8 @@ namespace MyHardware.Controllers
         public IActionResult Save(ProductViewModel productModel)
         {
             if (ModelState.IsValid)
-                //_productRepository.InsertProductFromDatabase(productModel);
-                TempData["success"] = "Produto criado com sucesso.";
+                _supplierRepository.Create(productModel);
+                TempData["success"] = "Fornecedor criado com sucesso.";
             return RedirectToAction("Index");
         }
 
@@ -46,7 +46,7 @@ namespace MyHardware.Controllers
             {
                 return NotFound();
             }
-            var currentProduct = _productRepository.FindProductById(id);
+            var currentProduct = _supplierRepository.FindSupplierById(id);
             if (currentProduct == null)
             {
                 return NotFound();
@@ -61,9 +61,9 @@ namespace MyHardware.Controllers
             if (ModelState.IsValid)
             {
                 var productMap = _mapper.Map<ProductViewModel, Product>(productModel);
-                _productRepository.UpdateProductFromDatabase(productMap);
+                _supplierRepository.Update(productMap);
             }
-            TempData["success"] = "Produto alterado com sucesso.";
+            TempData["success"] = "Fornecedor alterado com sucesso.";
             return RedirectToAction("Index");
         }
 
@@ -71,7 +71,7 @@ namespace MyHardware.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Export()
         {
-            _productRepository.ExportAllProducts();
+            _supplierRepository.ExportAllSupplier();
             return Ok();
         }
     }

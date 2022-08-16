@@ -8,9 +8,9 @@ namespace MyHardware.Repository
     {
         Task Create(Customer customerModel);
         Customer Update(Customer customerModel);
-        Task<Customer?> FindProductById(int id);
-        Task<IEnumerable<Customer>>  GetAllProduct();
-        Task ExportAllProducts();
+        Task<Customer?> FindCustomerById(int id);
+        Task<IEnumerable<Customer>>  GetAllCustomer();
+        Task ExportAllCustomer();
     }
     public class CustomerRepository : ICustomerRepository
     {
@@ -38,19 +38,19 @@ namespace MyHardware.Repository
             return customerModel;
         }
 
-        public async Task<Customer?> FindProductById(int id) 
+        public async Task<Customer?> FindCustomerById(int id) 
         {
             var currentCustomer = await _db.Customer.AsNoTracking().Where(c => c.Id == id).FirstOrDefaultAsync();
             return currentCustomer;
         }
 
-        public async Task<IEnumerable<Customer>> GetAllProduct()
+        public async Task<IEnumerable<Customer>> GetAllCustomer()
         {
             IEnumerable<Customer> currentCustomer = await _db.Customer.ToListAsync();
             return currentCustomer;
         }
 
-        public async Task ExportAllProducts()
+        public async Task ExportAllCustomer()
         {
             IEnumerable<Customer> listCustomer = await _db.Customer.ToListAsync();
             await _excelService.ExportToExcel(listCustomer, "C:/ProjetosMateusPadraoMvc/MathDrinksWeb/MathDrinks/excel", "customer");
