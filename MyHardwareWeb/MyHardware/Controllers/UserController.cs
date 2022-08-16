@@ -21,8 +21,8 @@ namespace MyHardware.Controllers
 
         public IActionResult Index()
         {
-            var allProducts = _productRepository.GetAllProduct();
-            return View(allProducts);
+            var allUsers = _userRepository.GetAllUser();
+            return View(allUsers);
         }
 
         public IActionResult Create()
@@ -32,11 +32,11 @@ namespace MyHardware.Controllers
 
         [HttpPost("save")]
         [ValidateAntiForgeryToken]
-        public IActionResult Save(ProductViewModel productModel)
+        public IActionResult Save(UserViewModel userModel)
         {
             if (ModelState.IsValid)
-                //_productRepository.InsertProductFromDatabase(productModel);
-                TempData["success"] = "Produto criado com sucesso.";
+                _userRepository.Create(userModel);
+                TempData["success"] = "Usuário criado com sucesso.";
             return RedirectToAction("Index");
         }
 
@@ -46,24 +46,24 @@ namespace MyHardware.Controllers
             {
                 return NotFound();
             }
-            var currentProduct = _productRepository.FindProductById(id);
-            if (currentProduct == null)
+            var currentUser = _userRepository.FindUserById(id);
+            if (currentUser == null)
             {
                 return NotFound();
             }
-            return View("ProductViewModel", currentProduct);
+            return View("UserViewModel", currentUser);
         }
 
         [HttpPost("edit")]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(ProductViewModel productModel)
+        public IActionResult Edit(UserViewModel userModel)
         {
             if (ModelState.IsValid)
             {
-                var productMap = _mapper.Map<ProductViewModel, Product>(productModel);
-                _productRepository.UpdateProductFromDatabase(productMap);
+                var userMap = _mapper.Map<UserViewModel, User>(userModel);
+                _userRepository.Update(userMap);
             }
-            TempData["success"] = "Produto alterado com sucesso.";
+            TempData["success"] = "Usuário alterado com sucesso.";
             return RedirectToAction("Index");
         }
 
@@ -71,7 +71,7 @@ namespace MyHardware.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Export()
         {
-            _productRepository.ExportAllProducts();
+            _userRepository.ExportAllUsers();
             return Ok();
         }
     }

@@ -21,7 +21,7 @@ namespace MyHardware.Controllers
 
         public IActionResult Index()
         {
-            var allProducts = _productRepository.GetAllProduct();
+            var allProducts = _customerRepository.GetAllCustomer();
             return View(allProducts);
         }
 
@@ -32,11 +32,14 @@ namespace MyHardware.Controllers
 
         [HttpPost("save")]
         [ValidateAntiForgeryToken]
-        public IActionResult Save(ProductViewModel productModel)
+        public IActionResult Save(CustomerViewModel customerModel)
         {
             if (ModelState.IsValid)
-                //_productRepository.InsertProductFromDatabase(productModel);
-                TempData["success"] = "Produto criado com sucesso.";
+            {
+                var customerMap = _mapper.Map<CustomerViewModel, Customer>(customerModel);
+                _customerRepository.Create(customerMap);
+            }
+            TempData["success"] = "Cliente criado com sucesso.";
             return RedirectToAction("Index");
         }
 
@@ -46,24 +49,24 @@ namespace MyHardware.Controllers
             {
                 return NotFound();
             }
-            var currentProduct = _productRepository.FindProductById(id);
-            if (currentProduct == null)
+            var currentCustomer = _customerRepository.FindCustomerById(id);
+            if (currentCustomer == null)
             {
                 return NotFound();
             }
-            return View("ProductViewModel", currentProduct);
+            return View("CustomerViewModel", currentCustomer);
         }
 
         [HttpPost("edit")]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(ProductViewModel productModel)
+        public IActionResult Edit(CustomerViewModel customerModel)
         {
             if (ModelState.IsValid)
             {
-                var productMap = _mapper.Map<ProductViewModel, Product>(productModel);
-                _productRepository.UpdateProductFromDatabase(productMap);
+                var customerMap = _mapper.Map<CustomerViewModel, Customer>(customerModel);
+                _customerRepository.Update(customerMap);
             }
-            TempData["success"] = "Produto alterado com sucesso.";
+            TempData["success"] = "Cliente alterado com sucesso.";
             return RedirectToAction("Index");
         }
 
@@ -71,7 +74,7 @@ namespace MyHardware.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Export()
         {
-            _productRepository.ExportAllProducts();
+            _customerRepository.ExportAllCustomer();
             return Ok();
         }
     }
