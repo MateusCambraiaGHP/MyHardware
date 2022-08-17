@@ -35,7 +35,10 @@ namespace MyHardware.Controllers
         public IActionResult Save(UserViewModel userModel)
         {
             if (ModelState.IsValid)
-                _userRepository.Create(userModel);
+            {
+                var userMap = _mapper.Map<UserViewModel, User>(userModel);
+                _userRepository.Create(userMap);            
+            }
                 TempData["success"] = "Usuário criado com sucesso.";
             return RedirectToAction("Index");
         }

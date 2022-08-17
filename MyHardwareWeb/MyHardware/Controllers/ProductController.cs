@@ -21,8 +21,7 @@ namespace MyHardware.Controllers
 
         public IActionResult Index()
         {
-            var allProducts = _productRepository.GetAllProduct();
-            return View(allProducts);
+            return View();
         }
 
         public IActionResult Create()

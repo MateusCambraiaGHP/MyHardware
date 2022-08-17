@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyHardware.Models;
 using System.Diagnostics;
 
 namespace MyHardware.Controllers

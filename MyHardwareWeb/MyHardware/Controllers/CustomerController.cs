@@ -1,28 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyHardware.Repository;
 using static MyHardware.Utility.Constants;
 using MyHardware.ViewModel;
 using AutoMapper;
-using MyHardware.Models;
+using MyHardware.Application.Interfaces;
+using MyHardwareWeb.Domain.Models;
 
 namespace MyHardware.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly ICustomerRepository _customerRepository;
+        private readonly ICustomerService _customerService;
         private readonly IMapper _mapper;
 
-        public CustomerController(ICustomerRepository customerRepository,
+        public CustomerController(ICustomerService customerService,
             IMapper mapper)
         {
             _mapper = mapper;
-            _customerRepository = customerRepository;
+            _customerService = customerService;
         }
 
         public IActionResult Index()
         {
-            var allProducts = _customerRepository.GetAllCustomer();
-            return View(allProducts);
+            return View();
         }
 
         public IActionResult Create()
@@ -37,7 +36,7 @@ namespace MyHardware.Controllers
             if (ModelState.IsValid)
             {
                 var customerMap = _mapper.Map<CustomerViewModel, Customer>(customerModel);
-                _customerRepository.Create(customerMap);
+                _customerService.Create(customerMap);
             }
             TempData["success"] = "Cliente criado com sucesso.";
             return RedirectToAction("Index");
@@ -45,16 +44,10 @@ namespace MyHardware.Controllers
 
         public IActionResult Edit(int id)
         {
-            if (id == DefaultValue.Inactive)
-            {
-                return NotFound();
-            }
-            var currentCustomer = _customerRepository.FindCustomerById(id);
+            var currentCustomer = _customerService.FindCustomerById(id);
             if (currentCustomer == null)
-            {
                 return NotFound();
-            }
-            return View("CustomerViewModel", currentCustomer);
+            return View(currentCustomer);
         }
 
         [HttpPost("edit")]
@@ -64,7 +57,7 @@ namespace MyHardware.Controllers
             if (ModelState.IsValid)
             {
                 var customerMap = _mapper.Map<CustomerViewModel, Customer>(customerModel);
-                _customerRepository.Update(customerMap);
+                _customerService.Update(customerMap);
             }
             TempData["success"] = "Cliente alterado com sucesso.";
             return RedirectToAction("Index");
@@ -74,7 +67,7 @@ namespace MyHardware.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Export()
         {
-            _customerRepository.ExportAllCustomer();
+            _customerService.ExportAllCustomer();
             return Ok();
         }
     }
