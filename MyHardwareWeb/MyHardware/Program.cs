@@ -1,15 +1,14 @@
-using MyHardware.Data;
 using MyHardware.Interfaces;
 using MyHardware.Services;
+using MyHardwareWeb.Infrastructure.Common.Extensions;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IApplicationDbContext, ApplicationMySqlDbContext>();
-builder.Services.AddScoped<IProductExcelService, ProductExcelService>();
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddInfrastructure();
+builder.Services.AddApplication();
 
 
 var app = builder.Build();

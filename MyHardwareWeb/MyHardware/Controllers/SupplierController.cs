@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyHardware.Repository;
 using static MyHardware.Utility.Constants;
 using MyHardware.ViewModel;
 using AutoMapper;
-using MyHardware.Models;
 
 namespace MyHardware.Controllers
 {
@@ -21,8 +19,8 @@ namespace MyHardware.Controllers
 
         public IActionResult Index()
         {
-            var allProducts = _supplierRepository.GetAllSupplier();
-            return View(allProducts);
+            var allSuppliers = _supplierRepository.GetAllSupplier();
+            return View(allSuppliers);
         }
 
         public IActionResult Create()
@@ -32,11 +30,14 @@ namespace MyHardware.Controllers
 
         [HttpPost("save")]
         [ValidateAntiForgeryToken]
-        public IActionResult Save(ProductViewModel productModel)
+        public IActionResult Save(SupplierViewModel supplierModel)
         {
             if (ModelState.IsValid)
-                _supplierRepository.Create(productModel);
-                TempData["success"] = "Fornecedor criado com sucesso.";
+            {
+                var supplierMap = _mapper.Map<SupplierViewModel, Supplier>(supplierModel);
+                _supplierRepository.Create(supplierMap);
+            }
+            TempData["success"] = "Fornecedor criado com sucesso.";
             return RedirectToAction("Index");
         }
 
@@ -46,22 +47,22 @@ namespace MyHardware.Controllers
             {
                 return NotFound();
             }
-            var currentProduct = _supplierRepository.FindSupplierById(id);
-            if (currentProduct == null)
+            var currentSupplier = _supplierRepository.FindSupplierById(id);
+            if (currentSupplier == null)
             {
                 return NotFound();
             }
-            return View("ProductViewModel", currentProduct);
+            return View("SupplierViewModel", currentSupplier);
         }
 
         [HttpPost("edit")]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(ProductViewModel productModel)
+        public IActionResult Edit(SupplierViewModel supplierModel)
         {
             if (ModelState.IsValid)
             {
-                var productMap = _mapper.Map<ProductViewModel, Product>(productModel);
-                _supplierRepository.Update(productMap);
+                var supplierMap = _mapper.Map<SupplierViewModel, Supplier>(supplierModel);
+                _supplierRepository.Update(supplierMap);
             }
             TempData["success"] = "Fornecedor alterado com sucesso.";
             return RedirectToAction("Index");
