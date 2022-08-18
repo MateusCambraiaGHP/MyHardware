@@ -1,21 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using static MyHardware.Utility.Constants;
 using MyHardware.ViewModel;
-using AutoMapper;
-using MyHardware.Application.Interfaces;
-using MyHardwareWeb.Domain.Models;
+using MyHardwareWeb.Application.Interfaces;
 
 namespace MyHardware.Controllers
 {
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;
-        private readonly IMapper _mapper;
 
-        public CustomerController(ICustomerService customerService,
-            IMapper mapper)
+        public CustomerController(ICustomerService customerService)
         {
-            _mapper = mapper;
             _customerService = customerService;
         }
 
@@ -33,18 +27,14 @@ namespace MyHardware.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Save(CustomerViewModel customerModel)
         {
-            if (ModelState.IsValid)
-            {
-                var customerMap = _mapper.Map<CustomerViewModel, Customer>(customerModel);
-                _customerService.Create(customerMap);
-            }
+            _customerService.Save(customerModel);
             TempData["success"] = "Cliente criado com sucesso.";
             return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
         {
-            var currentCustomer = _customerService.FindCustomerById(id);
+            var currentCustomer = _customerService.FindById(id);
             if (currentCustomer == null)
                 return NotFound();
             return View(currentCustomer);
@@ -54,21 +44,17 @@ namespace MyHardware.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(CustomerViewModel customerModel)
         {
-            if (ModelState.IsValid)
-            {
-                var customerMap = _mapper.Map<CustomerViewModel, Customer>(customerModel);
-                _customerService.Update(customerMap);
-            }
+            _customerService.Edit(customerModel);
             TempData["success"] = "Cliente alterado com sucesso.";
             return RedirectToAction("Index");
         }
 
-        [HttpGet("export")]
-        [ValidateAntiForgeryToken]
-        public IActionResult Export()
-        {
-            _customerService.ExportAllCustomer();
-            return Ok();
-        }
+        //[HttpGet("export")]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Export()
+        //{
+        //    _customerService.ExportAllCustomer();
+        //    return Ok();
+        //}
     }
 }

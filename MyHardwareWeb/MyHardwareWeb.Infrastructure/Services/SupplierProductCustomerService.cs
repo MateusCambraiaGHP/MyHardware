@@ -1,8 +1,19 @@
-﻿using MyHardware.Interfaces;
+﻿using MyHardware.ViewModel;
 using MyHardwareWeb.Application.Interfaces;
-using MyHardwareWeb.Domain.Models;
 
 namespace MyHardwareWeb.Infrastructure.Services
 {
-    public class SupplierProductCustomerService : ExcelService<SupplierProductCustomer>, ISupplierProductCustomerExcelService { }
+    public class SupplierProductCustomerService : ISupplierProductCustomerService
+    {
+
+        public SupplierProductCustomerViewModel FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SupplierProductCustomerViewModel GetAll()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

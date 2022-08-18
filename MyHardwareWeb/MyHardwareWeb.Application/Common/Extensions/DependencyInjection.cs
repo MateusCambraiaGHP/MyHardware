@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MyHardware.Services;
 using MyHardwareWeb.Application.Interfaces;
 using System.Reflection;
 
@@ -10,7 +9,6 @@ namespace MyHardwareWeb.Infrastructure.Common.Extensions
         public static IServiceCollection AddApplication(this IServiceCollection services) 
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddScoped<IProductExcelService, ProductExcelService>();
             return services;
         }
     }

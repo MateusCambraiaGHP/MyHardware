@@ -299,7 +299,6 @@ C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.DiaSym
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.DotNet.Scaffolding.Shared.dll
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.IO.RecyclableMemoryStream.dll
@@ -511,3 +510,9 @@ C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\obj\Debug\net6.0\refint\MyHardwar
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\obj\Debug\net6.0\MyHardware.pdb
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\obj\Debug\net6.0\MyHardware.genruntimeconfig.cache
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\obj\Debug\net6.0\ref\MyHardware.dll
+C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Application.dll
+C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Domain.dll
+C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Infrastructure.dll
+C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Application.pdb
+C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Infrastructure.pdb
+C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Domain.pdb

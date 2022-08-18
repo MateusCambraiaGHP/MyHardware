@@ -1,22 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyHardware.Repository;
 using static MyHardware.Utility.Constants;
 using MyHardware.ViewModel;
 using AutoMapper;
-using MyHardware.Models;
+using MyHardwareWeb.Application.Interfaces;
 
 namespace MyHardware.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IProductRepository _productRepository;
-        private readonly IMapper _mapper;
+        private readonly IProductService _productService;
 
-        public ProductController(IProductRepository productRepository,
-            IMapper mapper)
+        public ProductController(IProductService productService)
         {
-            _mapper = mapper;
-            _productRepository = productRepository;
+            _productService = productService;
         }
 
         public IActionResult Index()
@@ -26,19 +22,14 @@ namespace MyHardware.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            return View("Form");
         }
 
         [HttpPost("save")]
         [ValidateAntiForgeryToken]
         public IActionResult Save(ProductViewModel productModel)
         {
-            if (ModelState.IsValid)
-            {
-                var productMap = _mapper.Map<ProductViewModel, Product>(productModel);
-                _productRepository.Create(productMap);
-            }
-
+            _productService.Save(productModel);
             TempData["success"] = "Produto criado com sucesso.";
             return RedirectToAction("Index");
         }
@@ -49,33 +40,29 @@ namespace MyHardware.Controllers
             {
                 return NotFound();
             }
-            var currentProduct = _productRepository.FindProductById(id);
+            var currentProduct = _productService.FindById(id);
             if (currentProduct == null)
             {
                 return NotFound();
             }
-            return View("ProductViewModel", currentProduct);
+            return View(currentProduct);
         }
 
         [HttpPost("edit")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(ProductViewModel productModel)
         {
-            if (ModelState.IsValid)
-            {
-                var productMap = _mapper.Map<ProductViewModel, Product>(productModel);
-                _productRepository.Update(productMap);
-            }
+            _productService.Edit(productModel);
             TempData["success"] = "Produto alterado com sucesso.";
             return RedirectToAction("Index");
         }
 
-        [HttpGet("export")]
-        [ValidateAntiForgeryToken]
-        public IActionResult Export()
-        {
-            _productRepository.ExportAllProducts();
-            return Ok();
-        }
+        //[HttpGet("export")]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Export()
+        //{
+        //    _productRepository.ExportAllProducts();
+        //    return Ok();
+        //}
     }
 }

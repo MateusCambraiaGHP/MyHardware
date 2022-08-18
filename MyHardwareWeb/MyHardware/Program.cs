@@ -1,5 +1,3 @@
-using MyHardware.Interfaces;
-using MyHardware.Services;
 using MyHardwareWeb.Infrastructure.Common.Extensions;
 using System.Reflection;
 
