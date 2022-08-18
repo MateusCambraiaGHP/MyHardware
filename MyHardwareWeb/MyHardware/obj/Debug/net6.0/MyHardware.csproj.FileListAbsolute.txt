@@ -42,7 +42,6 @@ C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.Di
 C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.DotNet.Scaffolding.Shared.dll
 C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\Microsoft.IO.RecyclableMemoryStream.dll
@@ -516,3 +515,12 @@ C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.In
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Application.pdb
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Infrastructure.pdb
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Domain.pdb
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\AutoMapper.dll
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Application.dll
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Domain.dll
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Infrastructure.dll
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Application.pdb
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Infrastructure.pdb
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\bin\Debug\net6.0\MyHardwareWeb.Domain.pdb
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardware\obj\Debug\net6.0\scopedcss\Views\Shared\_Notification.cshtml.rz.scp.css

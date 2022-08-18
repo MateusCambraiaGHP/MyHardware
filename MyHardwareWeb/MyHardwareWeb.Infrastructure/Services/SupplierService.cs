@@ -1,4 +1,5 @@
-﻿using MyHardware.ViewModel;
+﻿using AutoMapper;
+using MyHardware.ViewModel;
 using MyHardwareWeb.Application.Interfaces;
 using MyHardwareWeb.Domain.Models;
 
@@ -6,24 +7,42 @@ namespace MyHardwareWeb.Infrastructure.Services
 {
     public class SupplierService : ISupplierService
     {
-        public void Edit(SupplierViewModel customerModel)
+        private readonly ISupplierRepository _supplierRepository;
+        private readonly IMapper _mapper;
+
+        public SupplierService(ISupplierRepository supplierRepository,
+            IMapper mapper)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _supplierRepository = supplierRepository;
         }
 
-        public SupplierViewModel FindById(int id)
+        public async Task<SupplierViewModel> Save(SupplierViewModel customerModel)
         {
-            throw new NotImplementedException();
+            var customerMap = _mapper.Map<SupplierViewModel, Supplier>(customerModel);
+            await _supplierRepository.Create(customerMap);
+            return customerModel;
         }
 
-        public SupplierViewModel GetAll()
+        public SupplierViewModel Edit(SupplierViewModel customerModel)
         {
-            throw new NotImplementedException();
+            var customerMap = _mapper.Map<SupplierViewModel, Supplier>(customerModel);
+            _supplierRepository.Update(customerMap);
+            return customerModel;
         }
 
-        public Task Save(SupplierViewModel customerModel)
+        public async Task<SupplierViewModel> FindById(int id)
         {
-            throw new NotImplementedException();
+            var currentCustomer = await _supplierRepository.FindById(id) ?? new Supplier();
+            var customerMap = _mapper.Map<Supplier, SupplierViewModel>(currentCustomer);
+            return customerMap;
+        }
+
+        public async Task<SupplierViewModel> GetAll()
+        {
+            var listCustomer = await _supplierRepository.GetAll() ?? new List<Supplier>(); ;
+            var listCustomerMap = _mapper.Map<IEnumerable<Supplier>, SupplierViewModel>(listCustomer);
+            return listCustomerMap;
         }
     }
 }

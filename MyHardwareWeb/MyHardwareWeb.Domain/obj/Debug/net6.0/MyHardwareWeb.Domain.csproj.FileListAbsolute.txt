@@ -10,3 +10,15 @@ C:\Workdir\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\MyHard
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\refint\MyHardwareWeb.Domain.dll
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\MyHardwareWeb.Domain.pdb
 C:\Workdir\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\ref\MyHardwareWeb.Domain.dll
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\bin\Debug\net6.0\MyHardwareWeb.Domain.deps.json
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\bin\Debug\net6.0\MyHardwareWeb.Domain.dll
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\bin\Debug\net6.0\MyHardwareWeb.Domain.pdb
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\MyHardwareWeb.Domain.csproj.AssemblyReference.cache
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\MyHardwareWeb.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\MyHardwareWeb.Domain.AssemblyInfoInputs.cache
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\MyHardwareWeb.Domain.AssemblyInfo.cs
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\MyHardwareWeb.Domain.csproj.CoreCompileInputs.cache
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\MyHardwareWeb.Domain.dll
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\refint\MyHardwareWeb.Domain.dll
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\MyHardwareWeb.Domain.pdb
+C:\GitHubRepos\MyHardware\MyHardwareWeb\MyHardwareWeb.Domain\obj\Debug\net6.0\ref\MyHardwareWeb.Domain.dll

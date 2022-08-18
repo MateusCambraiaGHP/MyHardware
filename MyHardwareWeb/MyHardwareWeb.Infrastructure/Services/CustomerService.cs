@@ -17,28 +17,30 @@ namespace MyHardwareWeb.Infrastructure.Services
             _customerRepository = customerRepository;
         }
 
-        public async Task Save(CustomerViewModel customerModel)
+        public async Task<CustomerViewModel> Save(CustomerViewModel customerModel)
         {
             var customerMap = _mapper.Map<CustomerViewModel, Customer>(customerModel);
             await _customerRepository.Create(customerMap);
+            return customerModel;
         }
 
-        public void Edit(CustomerViewModel customerModel)
+        public CustomerViewModel Edit(CustomerViewModel customerModel)
         {
             var customerMap = _mapper.Map<CustomerViewModel, Customer>(customerModel);
             _customerRepository.Update(customerMap);
+            return customerModel;
         }
 
-        public CustomerViewModel FindById(int id)
+        public async Task<CustomerViewModel> FindByIdAsync(int id)
         {
-            var currentEntity = _customerRepository.FindById(id).Result;
-            var customerMap = _mapper.Map<Customer, CustomerViewModel>(currentEntity);
+            var currentCustomer = await _customerRepository.FindById(id) ?? new Customer();
+            var customerMap = _mapper.Map<Customer, CustomerViewModel>(currentCustomer);
             return customerMap;
         }
 
-        public CustomerViewModel GetAll()
+        public async Task<CustomerViewModel> GetAll()
         {
-            var listCustomer = _customerRepository.GetAll().Result;
+            var listCustomer = await _customerRepository.GetAll() ?? new List<Customer>();
             var listCustomerMap = _mapper.Map<IEnumerable<Customer>, CustomerViewModel>(listCustomer);
             return listCustomerMap;
         }

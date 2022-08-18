@@ -1,4 +1,5 @@
-﻿using MyHardware.ViewModel;
+﻿using AutoMapper;
+using MyHardware.ViewModel;
 using MyHardwareWeb.Application.Interfaces;
 using MyHardwareWeb.Domain.Models;
 
@@ -6,14 +7,28 @@ namespace MyHardwareWeb.Infrastructure.Services
 {
     public class SupplierProductService : ISupplierProductService
     {
-        public SupplierProductViewModel FindById(int id)
+        private readonly ISupplierProductRepository _supplierProductRepository;
+        private readonly IMapper _mapper;
+
+        public SupplierProductService(ISupplierProductRepository supplierProductRepository,
+            IMapper mapper)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _supplierProductRepository = supplierProductRepository;
         }
 
-        public SupplierProductViewModel GetAll()
+        public async Task<SupplierProductViewModel> FindById(int id)
         {
-            throw new NotImplementedException();
+            var currentSupplierProduct = await _supplierProductRepository.FindById(id) ?? new SupplierProduct();
+            var SupplierProductMap = _mapper.Map<SupplierProduct, SupplierProductViewModel>(currentSupplierProduct);
+            return SupplierProductMap;
+        }
+
+        public async Task<SupplierProductViewModel> GetAll()
+        {
+            var listSupplierProduct = await _supplierProductRepository.GetAll() ?? new List<SupplierProduct>();
+            var listSupplierProductMap = _mapper.Map<IEnumerable<SupplierProduct>, SupplierProductViewModel>(listSupplierProduct);
+            return listSupplierProductMap;
         }
     }
 }
