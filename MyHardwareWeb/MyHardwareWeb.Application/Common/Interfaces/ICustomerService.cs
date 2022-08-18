@@ -1,10 +1,15 @@
-﻿using MyHardwareWeb.Domain.Models;
+﻿using MyHardware.ViewModel;
 
-namespace MyHardware.Application.Interfaces
+namespace MyHardwareWeb.Application.Interfaces
 {
     public interface ICustomerService
     {
-        //Task ExportToExcel(IEnumerable<Customer> entityList, string path, string name);
+        Task Save(CustomerViewModel customerModel);
 
+        void Edit(CustomerViewModel customerModel);
+
+        CustomerViewModel FindById(int id);
+
+        CustomerViewModel GetAll();
     }
 }

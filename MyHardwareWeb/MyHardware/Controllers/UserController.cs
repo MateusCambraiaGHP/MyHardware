@@ -1,27 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyHardware.Repository;
 using static MyHardware.Utility.Constants;
 using MyHardware.ViewModel;
 using AutoMapper;
-using MyHardware.Models;
+using MyHardwareWeb.Application.Interfaces;
 
 namespace MyHardware.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapper;
+        private readonly IUserService _userService;
 
-        public UserController(IUserRepository userRepository,
-            IMapper mapper)
+        public UserController(IUserService userService)
         {
-            _mapper = mapper;
-            _userRepository = userRepository;
+            _userService = userService;
         }
 
         public IActionResult Index()
         {
-            var allUsers = _userRepository.GetAllUser();
+            var allUsers = _userService.GetAll();
             return View(allUsers);
         }
 
@@ -34,12 +30,8 @@ namespace MyHardware.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Save(UserViewModel userModel)
         {
-            if (ModelState.IsValid)
-            {
-                var userMap = _mapper.Map<UserViewModel, User>(userModel);
-                _userRepository.Create(userMap);            
-            }
-                TempData["success"] = "Usuário criado com sucesso.";
+            _userService.Save(userModel);            
+            TempData["success"] = "Usuário criado com sucesso.";
             return RedirectToAction("Index");
         }
 
@@ -49,33 +41,29 @@ namespace MyHardware.Controllers
             {
                 return NotFound();
             }
-            var currentUser = _userRepository.FindUserById(id);
+            var currentUser = _userService.FindById(id);
             if (currentUser == null)
             {
                 return NotFound();
             }
-            return View("UserViewModel", currentUser);
+            return View(currentUser);
         }
 
         [HttpPost("edit")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(UserViewModel userModel)
         {
-            if (ModelState.IsValid)
-            {
-                var userMap = _mapper.Map<UserViewModel, User>(userModel);
-                _userRepository.Update(userMap);
-            }
+            _userService.Edit(userModel);
             TempData["success"] = "Usuário alterado com sucesso.";
             return RedirectToAction("Index");
         }
 
-        [HttpGet("export")]
-        [ValidateAntiForgeryToken]
-        public IActionResult Export()
-        {
-            _userRepository.ExportAllUsers();
-            return Ok();
-        }
+        //[HttpGet("export")]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Export()
+        //{
+        //    _userRepository.ExportAllUsers();
+        //    return Ok();
+        //}
     }
 }

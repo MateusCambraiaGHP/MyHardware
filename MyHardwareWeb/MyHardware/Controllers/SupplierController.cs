@@ -2,25 +2,22 @@
 using static MyHardware.Utility.Constants;
 using MyHardware.ViewModel;
 using AutoMapper;
+using MyHardwareWeb.Application.Interfaces;
 
 namespace MyHardware.Controllers
 {
     public class SupplierController : Controller
     {
-        private readonly ISupplierRepository _supplierRepository;
-        private readonly IMapper _mapper;
+        private readonly ISupplierService _supplierService;
 
-        public SupplierController(ISupplierRepository supplierRepository,
-            IMapper mapper)
+        public SupplierController(ISupplierService supplierService)
         {
-            _mapper = mapper;
-            _supplierRepository = supplierRepository;
+            _supplierService = supplierService;
         }
 
         public IActionResult Index()
         {
-            var allSuppliers = _supplierRepository.GetAllSupplier();
-            return View(allSuppliers);
+            return View();
         }
 
         public IActionResult Create()
@@ -32,11 +29,7 @@ namespace MyHardware.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Save(SupplierViewModel supplierModel)
         {
-            if (ModelState.IsValid)
-            {
-                var supplierMap = _mapper.Map<SupplierViewModel, Supplier>(supplierModel);
-                _supplierRepository.Create(supplierMap);
-            }
+            _supplierService.Save(supplierModel);
             TempData["success"] = "Fornecedor criado com sucesso.";
             return RedirectToAction("Index");
         }
@@ -47,33 +40,29 @@ namespace MyHardware.Controllers
             {
                 return NotFound();
             }
-            var currentSupplier = _supplierRepository.FindSupplierById(id);
+            var currentSupplier = _supplierService.FindById(id);
             if (currentSupplier == null)
             {
                 return NotFound();
             }
-            return View("SupplierViewModel", currentSupplier);
+            return View(currentSupplier);
         }
 
         [HttpPost("edit")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(SupplierViewModel supplierModel)
         {
-            if (ModelState.IsValid)
-            {
-                var supplierMap = _mapper.Map<SupplierViewModel, Supplier>(supplierModel);
-                _supplierRepository.Update(supplierMap);
-            }
+            _supplierService.Edit(supplierModel);
             TempData["success"] = "Fornecedor alterado com sucesso.";
             return RedirectToAction("Index");
         }
 
-        [HttpGet("export")]
-        [ValidateAntiForgeryToken]
-        public IActionResult Export()
-        {
-            _supplierRepository.ExportAllSupplier();
-            return Ok();
-        }
+        //[HttpGet("export")]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Export()
+        //{
+        //    _supplierRepository.ExportAllSupplier();
+        //    return Ok();
+        //}
     }
 }
