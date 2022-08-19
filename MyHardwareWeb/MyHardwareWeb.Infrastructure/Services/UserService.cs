@@ -1,4 +1,5 @@
-﻿using MyHardware.ViewModel;
+﻿using AutoMapper;
+using MyHardware.ViewModel;
 using MyHardwareWeb.Application.Interfaces;
 using MyHardwareWeb.Domain.Models;
 
@@ -6,24 +7,42 @@ namespace MyHardwareWeb.Infrastructure.Services
 {
     public class UserService : IUserService
     {
-        public void Edit(UserViewModel customerModel)
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
+
+        public UserService(IUserRepository userRepository,
+            IMapper mapper)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _userRepository = userRepository;
         }
 
-        public UserViewModel FindById(int id)
+        public async Task<UserViewModel> Save(UserViewModel customerModel)
         {
-            throw new NotImplementedException();
+            var customerMap = _mapper.Map<UserViewModel, User>(customerModel);
+            await _userRepository.Create(customerMap);
+            return customerModel;
         }
 
-        public UserViewModel GetAll()
+        public UserViewModel Edit(UserViewModel customerModel)
         {
-            throw new NotImplementedException();
+            var customerMap = _mapper.Map<UserViewModel, User>(customerModel);
+            _userRepository.Update(customerMap);
+            return customerModel;
         }
 
-        public Task Save(UserViewModel customerModel)
+        public async Task<UserViewModel> FindById(int id)
         {
-            throw new NotImplementedException();
+            var currentCustomer = await _userRepository.FindById(id) ?? new User();
+            var customerMap = _mapper.Map<User, UserViewModel>(currentCustomer);
+            return customerMap;
+        }
+
+        public async Task<UserViewModel> GetAll()
+        {
+            var listCustomer = await _userRepository.GetAll() ?? new List<User>();
+            var listCustomerMap = _mapper.Map<IEnumerable<User>, UserViewModel>(listCustomer);
+            return listCustomerMap;
         }
     }
 }

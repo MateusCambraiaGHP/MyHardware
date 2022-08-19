@@ -5,12 +5,12 @@ namespace MyHardwareWeb.Application.Interfaces
 {
     public interface IProductService
     {
-        Task Save(ProductViewModel customerModel);
+        Task<ProductViewModel> Save(ProductViewModel customerModel);
 
-        void Edit(ProductViewModel customerModel);
+        ProductViewModel Edit(ProductViewModel customerModel);
 
-        ProductViewModel FindById(int id);
+        Task<ProductViewModel> FindById(int id);
 
-        ProductViewModel GetAll();
+        Task<ProductViewModel> GetAll();
     }
 }

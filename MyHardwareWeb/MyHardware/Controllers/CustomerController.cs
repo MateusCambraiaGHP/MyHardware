@@ -34,7 +34,7 @@ namespace MyHardware.Controllers
 
         public IActionResult Edit(int id)
         {
-            var currentCustomer = _customerService.FindById(id);
+            var currentCustomer = _customerService.FindByIdAsync(id);
             if (currentCustomer == null)
                 return NotFound();
             return View(currentCustomer);

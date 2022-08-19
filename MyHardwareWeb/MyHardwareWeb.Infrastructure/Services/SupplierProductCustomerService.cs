@@ -1,19 +1,34 @@
-﻿using MyHardware.ViewModel;
+﻿using AutoMapper;
+using MyHardware.ViewModel;
 using MyHardwareWeb.Application.Interfaces;
+using MyHardwareWeb.Domain.Models;
 
 namespace MyHardwareWeb.Infrastructure.Services
 {
     public class SupplierProductCustomerService : ISupplierProductCustomerService
     {
+        private readonly ISupplierProductCustomerRepository _supplierProductCustomerRepository;
+        private readonly IMapper _mapper;
 
-        public SupplierProductCustomerViewModel FindById(int id)
+        public SupplierProductCustomerService(ISupplierProductCustomerRepository supplierProductCustomerRepository,
+            IMapper mapper)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _supplierProductCustomerRepository = supplierProductCustomerRepository;
         }
 
-        public SupplierProductCustomerViewModel GetAll()
+        public async Task<SupplierProductCustomerViewModel> FindById(int id)
         {
-            throw new NotImplementedException();
+            var currentSupplierProductCustomer = await _supplierProductCustomerRepository.FindById(id) ?? new SupplierProductCustomer();
+            var supplierProductCustomerMap = _mapper.Map<SupplierProductCustomer, SupplierProductCustomerViewModel>(currentSupplierProductCustomer);
+            return supplierProductCustomerMap;
+        }
+
+        public async Task<SupplierProductCustomerViewModel> GetAll()
+        {
+            var listSupplierProductCustomer = await _supplierProductCustomerRepository.GetAll() ?? new List<SupplierProductCustomer>();
+            var listSupplierProductCustomerMap = _mapper.Map<IEnumerable<SupplierProductCustomer>, SupplierProductCustomerViewModel>(listSupplierProductCustomer);
+            return listSupplierProductCustomerMap;
         }
     }
 }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Workdir\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Application\\MyHardwareWeb.Application.csproj": {}
+    "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Application\\MyHardwareWeb.Application.csproj": {}
   },
   "projects": {
-    "C:\\Workdir\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Application\\MyHardwareWeb.Application.csproj": {
+    "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Application\\MyHardwareWeb.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Workdir\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Application\\MyHardwareWeb.Application.csproj",
+        "projectUniqueName": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Application\\MyHardwareWeb.Application.csproj",
         "projectName": "MyHardwareWeb.Application",
-        "projectPath": "C:\\Workdir\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Application\\MyHardwareWeb.Application.csproj",
-        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "C:\\Workdir\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Application\\obj\\",
+        "projectPath": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Application\\MyHardwareWeb.Application.csproj",
+        "packagesPath": "C:\\Users\\Vega\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vega\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Workdir\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj": {
-                "projectPath": "C:\\Workdir\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj"
+              "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj": {
+                "projectPath": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj"
               }
             }
           }
@@ -80,20 +80,20 @@
         }
       }
     },
-    "C:\\Workdir\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj": {
+    "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Workdir\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj",
+        "projectUniqueName": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj",
         "projectName": "MyHardwareWeb.Domain",
-        "projectPath": "C:\\Workdir\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj",
-        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "C:\\Workdir\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\obj\\",
+        "projectPath": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj",
+        "packagesPath": "C:\\Users\\Vega\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vega\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

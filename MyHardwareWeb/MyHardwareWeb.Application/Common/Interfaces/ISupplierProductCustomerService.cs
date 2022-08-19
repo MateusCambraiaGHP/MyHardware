@@ -6,8 +6,8 @@ namespace MyHardwareWeb.Application.Interfaces
 {
     public interface ISupplierProductCustomerService
     {
-        SupplierProductCustomerViewModel FindById(int id);
+        Task<SupplierProductCustomerViewModel> FindById(int id);
 
-        SupplierProductCustomerViewModel GetAll();
+        Task<SupplierProductCustomerViewModel> GetAll();
     }
 }

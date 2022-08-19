@@ -5,12 +5,12 @@ namespace MyHardwareWeb.Application.Interfaces
 {
     public interface IUserService
     {
-        Task Save(UserViewModel customerModel);
+        Task<UserViewModel> Save(UserViewModel customerModel);
 
-        void Edit(UserViewModel customerModel);
+        UserViewModel Edit(UserViewModel customerModel);
 
-        UserViewModel FindById(int id);
+        Task<UserViewModel> FindById(int id);
 
-        UserViewModel GetAll();
+        Task<UserViewModel> GetAll();
     }
 }
