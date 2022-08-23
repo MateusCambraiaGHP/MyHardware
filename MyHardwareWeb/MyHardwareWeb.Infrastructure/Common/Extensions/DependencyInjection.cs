@@ -22,6 +22,7 @@ namespace MyHardwareWeb.Infrastructure.Common.Extensions
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ISupplierService, SupplierService>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IUserService, UserService>();
             return services;
         }
     }

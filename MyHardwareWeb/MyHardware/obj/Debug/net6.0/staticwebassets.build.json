@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "v5jz9aRJm7SQPw6cxPW0NiFqmhllnIHkM2mj0hyALVo=",
+  "Hash": "bEMLHc4GfD/a6dW6DC1xT1eKMv855iePesH1tCMpZcc=",
   "Source": "MyHardware",
   "BasePath": "_content/MyHardware",
   "Mode": "Default",
@@ -117,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Home.js"
+    },
+    {
+      "Identity": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardware\\wwwroot\\js\\Login.js",
+      "SourceId": "MyHardware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardware\\wwwroot\\",
+      "BasePath": "_content/MyHardware",
+      "RelativePath": "js/Login.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Login.js"
     },
     {
       "Identity": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardware\\wwwroot\\js\\Product.js",

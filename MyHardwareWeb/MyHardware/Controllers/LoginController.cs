@@ -1,24 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using static MyHardware.Utility.Constants;
 using MyHardware.ViewModel;
-using AutoMapper;
 using MyHardwareWeb.Application.Interfaces;
 
 namespace MyHardware.Controllers
 {
-    public class UserController : Controller
+    public class LoginController : Controller
     {
         private readonly IUserService _userService;
+        private readonly ILogger<LoginController> _logger;
 
-        public UserController(IUserService userService)
+        public LoginController(IUserService userService,
+            ILogger<LoginController> logger)
         {
             _userService = userService;
+            _logger = logger;
         }
 
         public IActionResult Index()
         {
-            var allUsers = _userService.GetAll();
-            return View(allUsers);
+            return View();
         }
 
         public IActionResult Create()
