@@ -5,9 +5,10 @@ namespace MyHardwareWeb.Application.Interfaces
 {
     public interface IUserService
     {
-        Task<UserViewModel> Save(UserViewModel customerModel);
+        Task<UserViewModel> Save(UserViewModel userModel); 
+        Task<bool> ValidatePassword(UserViewModel userModel);
 
-        UserViewModel Edit(UserViewModel customerModel);
+        UserViewModel Edit(UserViewModel userModel);
 
         Task<UserViewModel> FindById(int id);
 

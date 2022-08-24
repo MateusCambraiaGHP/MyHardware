@@ -26,12 +26,31 @@ namespace MyHardware.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> ValidatePassword(UserViewModel model)
+        {
+            await Validate(model);
+
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Where(x => x.Value.Errors.Count > 0).ToDictionary
+                    (
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    );
+                return BadRequest(new { errors });
+            }
+
+
+            TempData["success"] = "Login Efetuado com sucesso.";
+            return RedirectToAction("Index", "Product");
+        }
 
         [HttpPost("save")]
         [ValidateAntiForgeryToken]
         public IActionResult Save(UserViewModel userModel)
         {
-            _userService.Save(userModel);            
+
+            _userService.Save(userModel);
             TempData["success"] = "Usuário criado com sucesso.";
             return RedirectToAction("Index");
         }
@@ -66,5 +85,31 @@ namespace MyHardware.Controllers
         //    _userRepository.ExportAllUsers();
         //    return Ok();
         //}
+
+        #region
+        private async Task Validate(UserViewModel model)
+        {
+            if (String.IsNullOrEmpty(model.Email))
+            {
+                ModelState.AddModelError("Email", "Preencha o e-mail.");
+            }
+
+            if (String.IsNullOrEmpty(model.Password))
+            {
+                ModelState.AddModelError("Password", "Preencha a Senha.");
+            }
+
+            if (ModelState.ErrorCount == 0)
+            {
+                var isValid = await _userService.ValidatePassword(model);
+                if (!isValid) 
+                {
+                    ModelState.AddModelError("Password", "Senha ou Email incorretos!!");
+                }
+            }
+            
+            return;
+        }
+        #endregion
     }
 }
