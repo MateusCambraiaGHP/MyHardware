@@ -6,12 +6,12 @@ namespace MyHardwareWeb.Application.Interfaces
     public interface IUserService
     {
         Task<UserViewModel> Save(UserViewModel userModel); 
-        Task<bool> ValidatePassword(UserViewModel userModel);
 
         UserViewModel Edit(UserViewModel userModel);
 
         Task<UserViewModel> FindById(int id);
 
         Task<UserViewModel> GetAll();
+        Task<bool> ValidatePassword(UserViewModel model);
     }
 }

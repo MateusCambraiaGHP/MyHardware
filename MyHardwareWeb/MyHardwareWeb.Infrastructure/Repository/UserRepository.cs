@@ -8,11 +8,11 @@ namespace MyHardwareWeb.Infrastructure.Repository
     public class UserRepository : Repository<User>, IUserRepository
     {
         public UserRepository(IApplicationDbContext context) : base(context) { }
-
-        public async Task<bool> GetByEmailAndPassword(User userModel)
+        
+        public async Task<User> GetUserByEmailAndPassWord(User model)
         {
-            var currentUser = await _dbSet.AsNoTracking().Where(u => u.Email == userModel.Email && u.Password == userModel.Password).FirstOrDefaultAsync();
-            return currentUser != null;
+            var currentEntity = await _dbSet.AsNoTracking().Where(u => u.Email == model.Email && u.Password == model.Password).FirstOrDefaultAsync();
+            return currentEntity;
         }
     }
 }
