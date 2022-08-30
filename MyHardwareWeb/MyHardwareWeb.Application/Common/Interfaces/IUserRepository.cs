@@ -8,5 +8,6 @@ namespace MyHardwareWeb.Application.Interfaces
         User Update(User adressModel);
         Task<User?> FindById(int id);
         Task<IEnumerable<User>> GetAll();
+        Task<User> GetUserByEmailAndPassWord(string email, string password);
     }
 }
