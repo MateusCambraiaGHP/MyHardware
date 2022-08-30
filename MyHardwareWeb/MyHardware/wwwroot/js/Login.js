@@ -1,5 +1,4 @@
-﻿
-const loginForm = function () {
+﻿const loginForm = function () {
   //constants
 
   const render = function () {
@@ -14,6 +13,7 @@ const loginForm = function () {
         type: 'POST',
         data: data,
         success: function (result) {
+            window.location.replace('https://localhost:44384/Product');
         },
         error: function (xhr, status, exception) {
           App.showErrors(xhr);
@@ -32,8 +32,10 @@ const loginForm = function () {
         data: data,
         success: function (result) {
           console.log(result);
-          $('body').append(result);
-          $('body').modal("show");
+          $(result).appendTo('body').modal('show');
+          $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+          });
         },
         error: function (xhr, status, exception) {
         },
@@ -41,7 +43,6 @@ const loginForm = function () {
         }
       });
     });
-
 
   };
 

@@ -12,6 +12,6 @@ namespace MyHardwareWeb.Application.Interfaces
         Task<UserViewModel> FindById(int id);
 
         Task<UserViewModel> GetAll();
-        Task<bool> ValidatePassword(UserViewModel model);
+        Task<bool> ValidatePassword(string email, string password);
     }
 }

@@ -17,10 +17,9 @@ namespace MyHardwareWeb.Infrastructure.Services
             _userRepository = userRepository;
         }
 
-        public async Task<bool> ValidatePassword(UserViewModel model)
+        public async Task<bool> ValidatePassword(string email, string password)
         {
-            var userMap = _mapper.Map<UserViewModel, User>(model);
-            var currentUser = await _userRepository.GetUserByEmailAndPassWord(userMap);
+            var currentUser = await _userRepository.GetUserByEmailAndPassWord(email, password);
             return currentUser != null;
         }
         public async Task<UserViewModel> Save(UserViewModel customerModel)

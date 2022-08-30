@@ -38,12 +38,13 @@ namespace MyHardware.Controllers
             }
 
             TempData["success"] = "Login Efetuado com sucesso.";
-            return RedirectToAction("Index", "Product");
+
+            return Ok();
         }
         
         public IActionResult GetRegisterDialog()
         {
-            return PartialView("_RegisterUser"); 
+            return PartialView("_RegisterUserPartial"); 
         }
 
         [HttpPost("save")]
@@ -99,11 +100,12 @@ namespace MyHardware.Controllers
             {
                 ModelState.AddModelError("Password", "Preencha a Senha.");
             }
+
             if (ModelState.ErrorCount == 0)
             {
-                var isValid = await _userService.ValidatePassword(model);
+                var isValid = await _userService.ValidatePassword(model.Email, model.Password);
                 if (!isValid)
-                ModelState.AddModelError("Password", "Email ou senha incorretos.");
+                    ModelState.AddModelError("Password", "Email ou senha incorretos.");
             }
 
             return;

@@ -9,9 +9,9 @@ namespace MyHardwareWeb.Infrastructure.Repository
     {
         public UserRepository(IApplicationDbContext context) : base(context) { }
         
-        public async Task<User> GetUserByEmailAndPassWord(User model)
+        public async Task<User> GetUserByEmailAndPassWord(string email, string password)
         {
-            var currentEntity = await _dbSet.AsNoTracking().Where(u => u.Email == model.Email && u.Password == model.Password).FirstOrDefaultAsync();
+            var currentEntity = await _dbSet.AsNoTracking().Where(u => u.Email == email && u.Password == password).FirstOrDefaultAsync();
             return currentEntity;
         }
     }
