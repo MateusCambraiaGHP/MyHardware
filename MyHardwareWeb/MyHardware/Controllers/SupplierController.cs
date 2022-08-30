@@ -57,6 +57,10 @@ namespace MyHardware.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult GetInviteDialog()
+        {
+            return PartialView("_InviteCustomerPartial");
+        }
         //[HttpGet("export")]
         //[ValidateAntiForgeryToken]
         //public IActionResult Export()
