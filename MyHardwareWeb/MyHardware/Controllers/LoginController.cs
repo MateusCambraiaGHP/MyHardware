@@ -41,7 +41,7 @@ namespace MyHardware.Controllers
 
             return Ok();
         }
-        
+
         public IActionResult GetRegisterDialog()
         {
             return PartialView("_RegisterUserPartial"); 
