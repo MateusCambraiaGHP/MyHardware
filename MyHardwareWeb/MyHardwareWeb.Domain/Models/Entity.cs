@@ -6,6 +6,9 @@ namespace MyHardwareWeb.Domain.Models
     public abstract class Entity
     {
         public int Id { get; set; }
+        
+        [Column(TypeName = "varchar(1)")]
+        public string? Active { get; set; }
         public string? CreatedBy { get; set; }
 
         [Column(TypeName = "datetime")]

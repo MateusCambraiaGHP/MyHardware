@@ -15,6 +15,5 @@ namespace MyHardwareWeb.Domain.Models
 
         [Column(TypeName = "decimal(30,2)")]
         public double Price { get; set; }
-        public string? Active { get; set; }
     }
 }

@@ -13,7 +13,7 @@
         type: 'POST',
         data: data,
         success: function (result) {
-            window.location.replace('https://localhost:44384/Product');
+            window.location.replace('https://localhost:44384/Supplier');
         },
         error: function (xhr, status, exception) {
           App.showErrors(xhr);
