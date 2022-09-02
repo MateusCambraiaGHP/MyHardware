@@ -13,6 +13,5 @@ namespace MyHardwareWeb.Domain.Models
         [Column(TypeName = "varchar(20)")]
         public string? City { get; set; }
         public int Number { get; set; }
-        public string? Active { get; set; }
     }
 }

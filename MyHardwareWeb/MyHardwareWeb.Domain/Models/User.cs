@@ -12,6 +12,5 @@ namespace MyHardwareWeb.Domain.Models
 
         [Column(TypeName = "varchar(15)")]
         public string? Password { get; set; }
-        public string? Active { get; set; }
     }
 }

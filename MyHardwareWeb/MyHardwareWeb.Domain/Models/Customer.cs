@@ -10,6 +10,5 @@ namespace MyHardwareWeb.Domain.Models
 
         [Column(TypeName = "varchar(60)")]
         public string? Observation { get; set; }
-        public string? Active { get; set; }
     }
 }

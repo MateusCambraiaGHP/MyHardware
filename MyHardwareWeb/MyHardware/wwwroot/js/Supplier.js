@@ -16,24 +16,40 @@
           $(result).appendTo('body').modal('show');
           $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus');
-
-
           });
         },
         error: function (xhr, status, exception) {
         },
         complete: function () {
-          $('#TokenInput').val('fuidiudasfufdsadfdsfdsafsdsa');
+          $('#Token').val('fuidiudasfufdsadfdsfdsafsdsa');
+
           $('#flexCheckChecked').on('click', function () {
-            $('#TokenInput').removeAttr('readonly');
+            $('#Token').removeAttr('readonly');
+          });
+
+          $('.btn-invit').on('click', function (e) {
+            e.preventDefault();
+            console.log('a');
+            let data = $('#register-user-form').serializeArray().reduce(function (a, x) { a[x.name] = x.value; return a; }, {});
+            $.ajax({
+              url: 'https://localhost:44384' + '/Email' + '/SendEmail',
+              type: 'POST',
+              data: data,
+              success: function () {
+                $('#modal').modal('hide');
+              },
+              error: function (xhr, status, exception) {
+                App.showErrors(xhr);
+              },
+              complete: function () {
+              }
+            });
           });
         }
       });
     });
 
   };
-
-
 
   return {
     init: function () {
@@ -68,6 +84,24 @@ const supplierForm = function () {
     //});
 
   };
+
+  return {
+    init: function () {
+      render();
+    }
+  }
+}();
+
+const InvitFormDialog = function () {
+  //constants
+
+  const render = function () {
+    console.log('a');
+
+
+  };
+
+
 
   return {
     init: function () {

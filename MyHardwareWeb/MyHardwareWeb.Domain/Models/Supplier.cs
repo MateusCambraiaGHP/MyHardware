@@ -9,7 +9,5 @@ namespace MyHardwareWeb.Domain.Models
 
         [Column(TypeName = "varchar(130)")]
         public string? Description { get; set; }
-        public string? Active { get; set; }
-
     }
 }
