@@ -14,37 +14,11 @@
         data: data,
         success: function (result) {
           $(result).appendTo('body').modal('show');
-          $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').trigger('focus');
-          });
         },
         error: function (xhr, status, exception) {
         },
         complete: function () {
-          $('#Token').val('fuidiudasfufdsadfdsfdsafsdsa');
-
-          $('#flexCheckChecked').on('click', function () {
-            $('#Token').removeAttr('readonly');
-          });
-
-          $('.btn-invit').on('click', function (e) {
-            e.preventDefault();
-            console.log('a');
-            let data = $('#register-user-form').serializeArray().reduce(function (a, x) { a[x.name] = x.value; return a; }, {});
-            $.ajax({
-              url: 'https://localhost:44384' + '/Email' + '/SendEmail',
-              type: 'POST',
-              data: data,
-              success: function () {
-                $('#modal').modal('hide');
-              },
-              error: function (xhr, status, exception) {
-                App.showErrors(xhr);
-              },
-              complete: function () {
-              }
-            });
-          });
+          registerUserDialog.init();
         }
       });
     });
@@ -92,16 +66,36 @@ const supplierForm = function () {
   }
 }();
 
-const InvitFormDialog = function () {
+const registerUserDialog = function () {
   //constants
 
   const render = function () {
-    console.log('a');
+    $('#Token').val('fuidiudasfufdsadfdsfdsafsdsa');
 
+    $('#flexCheckChecked').on('click', function () {
+      $('#Token').removeAttr('readonly');
+    });
+
+    $('#register-user-form').submit(function (e) {
+      e.preventDefault();
+      console.log('a');
+      let data = $('#register-user-form').serializeArray().reduce(function (a, x) { a[x.name] = x.value; return a; }, {});
+      $.ajax({
+        url: 'https://localhost:44384' + '/Email' + '/SendEmail',
+        type: 'POST',
+        data: data,
+        success: function () {
+          $('#modal').modal('hide');
+        },
+        error: function (xhr, status, exception) {
+          App.showErrors(xhr);
+        },
+        complete: function () {
+        }
+      });
+    });
 
   };
-
-
 
   return {
     init: function () {
