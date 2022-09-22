@@ -5,7 +5,7 @@
 
 
   };
-
+  
   const showErrors = function (xhr) {
     let errors = xhr.responseJSON.errors;
     $.each(errors, (key, value) => {

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyHardware.Infrastructure.Data;
 
@@ -10,9 +11,10 @@ using MyHardware.Infrastructure.Data;
 namespace MyHardwareWeb.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationMySqlDbContext))]
-    partial class ApplicationMySqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220905142446_CorrectUser")]
+    partial class CorrectUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -7,7 +7,7 @@
     $('.alert-danger').hide();
 
     $('.js-login-action').click(function () {
-      let data = $('#login-form').serializeArray().reduce(function (a, x) { a[x.name] = x.value; return a; }, {});
+      let data =  $('#login-form').serializeArray().reduce(function (a, x) { a[x.name] = x.value; return a; }, {});
       $.ajax({
         url: window.location.href + 'Login' + '/ValidatePassword',
         type: 'POST',
