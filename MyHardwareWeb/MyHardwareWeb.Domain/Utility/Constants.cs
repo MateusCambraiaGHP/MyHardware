@@ -13,7 +13,17 @@
             public const int Active   = 1;
             public const int Inactive = 0;
         }
+        public class ComboboxItem
+        {
+            public string Value { get; set; }
+            public string Text { get; set; }
 
+            public ComboboxItem(string value, string text)
+            {
+                this.Value = value;
+                this.Text = text;
+            }
+        }
         public class ProductType
         {
             public const string PersonalComputer = "1";
@@ -23,20 +33,32 @@
             public const string Keyboard         = "5";
             public const string Mouse            = "6";
 
-            public string GetName(string productName)
+            public static string GetDescription(string productName)
             {
                 switch (productName)
                 {
-                    case ProductType.PersonalComputer: return "Computador";
-                    case ProductType.Microphone:       return "Microfone";
-                    case ProductType.Screen:           return "Monitor";
-                    case ProductType.Speaker:          return "Caixa de som";
-                    case ProductType.Keyboard:         return "Teclado";
-                    case ProductType.Mouse:            return "Mouse";
+                    case PersonalComputer: return "Computador";
+                    case Microphone:       return "Microfone";
+                    case Screen:           return "Monitor";
+                    case Speaker:          return "Caixa de som";
+                    case Keyboard:         return "Teclado";
+                    case Mouse:            return "Mouse";
                     default: return "";
                 }
             }
-        }
 
+            public static List<ComboboxItem> GetComboboxList()
+            {
+                return new List<ComboboxItem>
+            {
+                new ComboboxItem(PersonalComputer, GetDescription(PersonalComputer)),
+                new ComboboxItem(Microphone      , GetDescription(Microphone)),
+                new ComboboxItem(Screen          , GetDescription(Screen)),
+                new ComboboxItem(Speaker         , GetDescription(Speaker)),
+                new ComboboxItem(Keyboard        , GetDescription(Keyboard)),
+                new ComboboxItem(Mouse           , GetDescription(Mouse)),
+            };
+            }
+        }
     }
 }
