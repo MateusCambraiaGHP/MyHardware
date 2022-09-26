@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1reWwojgiJLQggYjg8fGiZZWifG/U3G8u5yzEOPpUG5JgqJ4PWJcfQwon2/jYrEBTIhuYVTNa/C1O83vR8RCHA==",
+  "dgSpecHash": "NE6Bd9X2udq984AOQ5TkmzEZpGVTokPkkSzMOa40fnafa5PEqYANLMYHRaQVGFBCyKNQ5BYAP9K4v6ZmRQFMhQ==",
   "success": true,
-  "projectFilePath": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj",
+  "projectFilePath": "C:\\GitHubRepos\\MyHardwareOLD\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
