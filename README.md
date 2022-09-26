@@ -33,22 +33,3 @@ Este projeto auxilia no aprendizando tanto de front-end quanto back-end, visando
  - [EntityFrameworkCore](https://www.nuget.org/packages/EntityFramework/)
 
 
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
-## Documentação
-
-[Documentação](https://link-da-documentação)
-
-
-## Apêndice
-
-Coloque qualquer informação adicional aqui
-
-
-## Feedback
-
-Se você tiver algum feedback, por favor nos deixe saber por meio de fake@fake.com
-
