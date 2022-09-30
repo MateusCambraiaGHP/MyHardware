@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gvRjhVRFwX2hLvdfyvF8GKa/KWA6JCOzEPmPtinwNGoXk1R58wF6sZP+bhht/fodsQZvv1QzvW4WY3A/xBcK+A==",
+  "dgSpecHash": "JRySgfCiNVq3o6X3MX5A2S0PSdqeDGgW2n18rfwph4YoyHBu8K12qAUfl/pB4yNkopz6Re/xe2wThx4EUNo9pw==",
   "success": true,
-  "projectFilePath": "C:\\GitHubRepos\\MyHardwareOLD\\MyHardwareWeb\\MyHardware\\MyHardware.csproj",
+  "projectFilePath": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardware\\MyHardware.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vega\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Vega\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

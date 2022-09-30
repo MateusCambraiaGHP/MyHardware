@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHubRepos\\MyHardwareOLD\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj": {}
+    "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj": {}
   },
   "projects": {
-    "C:\\GitHubRepos\\MyHardwareOLD\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj": {
+    "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHubRepos\\MyHardwareOLD\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj",
+        "projectUniqueName": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj",
         "projectName": "MyHardwareWeb.Domain",
-        "projectPath": "C:\\GitHubRepos\\MyHardwareOLD\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj",
+        "projectPath": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\MyHardwareWeb.Domain.csproj",
         "packagesPath": "C:\\Users\\Vega\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHubRepos\\MyHardwareOLD\\MyHardwareWeb\\MyHardwareWeb.Domain\\obj\\",
+        "outputPath": "C:\\GitHubRepos\\MyHardware\\MyHardwareWeb\\MyHardwareWeb.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
