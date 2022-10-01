@@ -3,6 +3,7 @@ using static MyHardware.Utility.Constants;
 using MyHardware.ViewModel;
 using AutoMapper;
 using MyHardwareWeb.Application.Interfaces;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MyHardware.Controllers
 {
@@ -22,6 +23,7 @@ namespace MyHardware.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.ProductType = new SelectList(ProductType.GetComboboxList(), "Value", "Text");
             return View("Form");
         }
 

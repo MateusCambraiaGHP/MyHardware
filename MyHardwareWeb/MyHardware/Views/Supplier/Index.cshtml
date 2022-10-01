@@ -6,19 +6,19 @@
 <div class="container p-3">
   <div class="row pt-4">
     <div class="col-6">
-      <h2 class="text-primary text-primary">Fornecedores</h2>
+      <h2 class="text-primary">Fornecedores</h2>
     </div>
     <div class="col-6 text-end">
-      <a asp-controller="Product" asp-action="Create" class="btn btn-primary bg-danger">
-        <i class="bi bi-plus-circle"></i> &nbsp; Criar Novo Fornecedor
-      </a>
-      <a class="js-invite-customer btn btn-primary btn-primary">
+      <a class="js-invite-customer btn btn-outline-danger">
           Convidar Cliente
       </a>
     </div>
   </div>
   <div class="row pt-4">
     <div class="col-8">
+      <a asp-controller="Supplier" asp-action="Create" class="btn btn-outline-primary mt-4">
+        <i class="bi bi-plus-circle"></i> Novo Fornecedor
+      </a>
       <button type="button" id="botao-exportar" class="btn btn-outline-success mt-4">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
           <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />

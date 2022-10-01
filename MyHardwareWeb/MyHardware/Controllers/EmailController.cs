@@ -10,7 +10,8 @@ namespace MyHardware.Controllers
     {
         private readonly IEmailService _emailService;
 
-        public EmailController(IEmailService emailService)
+        public EmailController(
+            IEmailService emailService)
         {
             _emailService = emailService;
         }
@@ -25,14 +26,13 @@ namespace MyHardware.Controllers
                 var errors = ModelState.GetModelErrors();
                 return BadRequest(new { errors });
             }
-            var validModel = await _emailService.SendEmail(model);
-            if (!validModel)
+            bool emailSent = await _emailService.SendEmail(model);
+            if (!emailSent)
                 return BadRequest();
             return Ok();
         }
 
-
-        #region
+        #region -------- Private Methods ----------
         private void Validate(EmailViewModel model)
         {
             if (String.IsNullOrEmpty(model.To))
@@ -49,7 +49,6 @@ namespace MyHardware.Controllers
             {
                 ModelState.AddModelError("NameClient", "Por favor preencha o nome do cliente.");
             }
-
             return;
         }
         #endregion

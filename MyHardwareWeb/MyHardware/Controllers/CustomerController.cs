@@ -8,7 +8,8 @@ namespace MyHardware.Controllers
     {
         private readonly ICustomerService _customerService;
 
-        public CustomerController(ICustomerService customerService)
+        public CustomerController(
+            ICustomerService customerService)
         {
             _customerService = customerService;
         }
@@ -35,7 +36,7 @@ namespace MyHardware.Controllers
         public IActionResult Edit(int id)
         {
             var currentCustomer = _customerService.FindByIdAsync(id);
-            if (currentCustomer == null)
+            if (currentCustomer is null)
                 return NotFound();
             return View(currentCustomer);
         }
