@@ -20,12 +20,12 @@ namespace MyHardware.Controllers
         public async Task<IActionResult> SendEmail(EmailViewModel model)
         {
             Validate(model);
-
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.GetModelErrors();
                 return BadRequest(new { errors });
             }
+
             bool emailSent = await _emailService.SendEmail(model);
             if (!emailSent)
                 return BadRequest();

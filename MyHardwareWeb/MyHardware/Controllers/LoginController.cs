@@ -30,7 +30,6 @@ namespace MyHardware.Controllers
         public async Task<IActionResult> ValidatePassword(UserViewModel model)
         {
             await Validate(model);
-
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.GetModelErrors();
@@ -38,7 +37,6 @@ namespace MyHardware.Controllers
             }
 
             TempData["success"] = "Login Efetuado com sucesso.";
-
             return Ok();
         }
 
@@ -88,7 +86,7 @@ namespace MyHardware.Controllers
         //    return Ok();
         //}
 
-        #region
+        #region ----------Private Methods-----------
         private async Task Validate(UserViewModel model)
         {
             if (String.IsNullOrEmpty(model.Email))
