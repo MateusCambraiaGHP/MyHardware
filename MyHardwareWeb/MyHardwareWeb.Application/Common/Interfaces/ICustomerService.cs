@@ -4,12 +4,9 @@ namespace MyHardwareWeb.Application.Interfaces
 {
     public interface ICustomerService
     {
-        Task<CustomerViewModel> Save(CustomerViewModel customerModel);
-
-        CustomerViewModel Edit(CustomerViewModel customerModel);
-
+        Task<CustomerViewModel> Save(CustomerViewModel model);
+        Task<CustomerViewModel> Edit(CustomerViewModel model);
         Task<CustomerViewModel> FindByIdAsync(int id);
-
-        Task<CustomerViewModel> GetAll();
+        Task<List<CustomerViewModel>> GetAll();
     }
 }

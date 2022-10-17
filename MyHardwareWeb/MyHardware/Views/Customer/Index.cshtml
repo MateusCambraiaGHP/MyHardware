@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<MyHardware.ViewModel.CustomerViewModel>
 @{
-  ViewData["Title"] = "Supplier Page";
+  ViewData["Title"] = "Clientes";
 }
 
 <div class="container p-3">
@@ -15,9 +15,7 @@
       <p id="erro">Ocorreu um erro, por favor tente novamente</p>
     </div>
     <div>
-      <a asp-controller="Product" asp-action="Create" class="btn btn-outline-primary bg-danger">
-        <i class="bi bi-plus-circle"></i> &nbsp; Criar Novo Cliente
-      </a>
+      <a asp-controller="Product" asp-action="Create" class="btn btn-outline-primary bg-danger"><i class="bi bi-plus-circle"></i> &nbsp; Criar Novo Cliente</a>
       <button type="button" id="botao-exportar" class="btn btn-outline-success mt-4">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
           <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
@@ -29,21 +27,14 @@
     <table class="table table-bordered table-striped" style="width:100%">
       <thead>
         <tr>
-          <th>
-            Nome
-          </th>
-          <th>
-            Quantidade
-          </th>
-          <th>
-            Preço
-          </th>
-          <th>
-            Descrição
-          </th>
+          <th>Nome</th>
+          <th>Quantidade</th>
+          <th>Preço</th>
+          <th>Descrição</th>
         </tr>
       </thead>
       <tbody id="tabela-produtos">
       </tbody>
     </table>
   </div>
+</div>

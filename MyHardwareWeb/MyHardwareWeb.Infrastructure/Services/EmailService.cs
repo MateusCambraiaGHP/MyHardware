@@ -38,7 +38,6 @@ namespace MyHardwareWeb.Infrastructure.Services
             {
                 return false;
             }
-
             return true;
         }
     }

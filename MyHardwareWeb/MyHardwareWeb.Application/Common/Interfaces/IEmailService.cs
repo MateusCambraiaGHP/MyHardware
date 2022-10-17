@@ -1,5 +1,4 @@
 ﻿using MyHardware.ViewModel;
-using MyHardwareWeb.Domain.Models;
 
 namespace MyHardwareWeb.Application.Interfaces
 {

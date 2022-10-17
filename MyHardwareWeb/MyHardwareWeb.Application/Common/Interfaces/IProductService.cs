@@ -1,16 +1,12 @@
 ﻿using MyHardware.ViewModel;
-using MyHardwareWeb.Domain.Models;
 
 namespace MyHardwareWeb.Application.Interfaces
 {
     public interface IProductService
     {
-        Task<ProductViewModel> Save(ProductViewModel customerModel);
-
-        ProductViewModel Edit(ProductViewModel customerModel);
-
+        Task<ProductViewModel> Save(ProductViewModel model);
+        Task<ProductViewModel> Edit(ProductViewModel model);
         Task<ProductViewModel> FindById(int id);
-
-        Task<ProductViewModel> GetAll();
+        Task<List<ProductViewModel>> GetAll();
     }
 }

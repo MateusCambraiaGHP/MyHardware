@@ -15,7 +15,7 @@ namespace MyHardware.ViewModel
         public DateTime CreatedAt { get; set; }
         public string? UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public bool? IsActive { get { return Active == StatusActive.Active; } }
+        public bool IsActive { get { return Active == StatusActive.Active; } }
         public bool? IsNew { get { return Id == 0; } }
         public bool? IsEquals { get; set; }
     }

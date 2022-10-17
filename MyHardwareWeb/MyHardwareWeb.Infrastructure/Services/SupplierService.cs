@@ -34,14 +34,14 @@ namespace MyHardwareWeb.Infrastructure.Services
         public async Task<SupplierViewModel> FindById(int id)
         {
             var currentCustomer = await _supplierRepository.FindById(id) ?? new Supplier();
-            var customerMap = _mapper.Map<Supplier, SupplierViewModel>(currentCustomer);
+            var customerMap     = _mapper.Map<Supplier, SupplierViewModel>(currentCustomer);
             return customerMap;
         }
 
-        public async Task<SupplierViewModel> GetAll()
+        public async Task<List<SupplierViewModel>> GetAll()
         {
-            var listCustomer = await _supplierRepository.GetAll() ?? new List<Supplier>(); ;
-            var listCustomerMap = _mapper.Map<IEnumerable<Supplier>, SupplierViewModel>(listCustomer);
+            var listCustomer    = await _supplierRepository.GetAll() ?? new List<Supplier>(); ;
+            var listCustomerMap = _mapper.Map<List<SupplierViewModel>>(listCustomer);
             return listCustomerMap;
         }
     }

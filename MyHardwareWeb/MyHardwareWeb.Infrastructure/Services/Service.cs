@@ -1,14 +1,10 @@
-﻿
-
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using MyHardware.ViewModel;
+﻿using AutoMapper;
 using MyHardwareWeb.Domain.Models;
 using MyHardwareWeb.Infrastructure.Repository;
 
 namespace MyHardwareWeb.Infrastructure.Services
 {
-    public abstract class Service <TModel, TEntity> where TEntity : Entity
+    public abstract class Service<TModel, TEntity> where TEntity : Entity
     {
 
         private readonly Repository<TEntity> _repository;
@@ -28,10 +24,10 @@ namespace MyHardwareWeb.Infrastructure.Services
             await _repository.Create(customerMap);
         }
 
-        public virtual TEntity Edit(TEntity entityModel)
+        public virtual async Task<TEntity> Edit(TEntity entityModel)
         {
             var customerMap = _mapper.Map<TEntity, TEntity>(entityModel);
-            _repository.Update(customerMap);
+            await _repository.Update(customerMap);
             return customerMap;
         }
 
@@ -41,7 +37,7 @@ namespace MyHardwareWeb.Infrastructure.Services
             return currentEntity;
         }
 
-        public virtual  IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             var listEntity = _repository.GetAll().Result;
             return listEntity;

@@ -13,6 +13,7 @@
             public const int Active   = 1;
             public const int Inactive = 0;
         }
+
         public class ComboboxItem
         {
             public string Value { get; set; }
@@ -24,6 +25,7 @@
                 this.Text = text;
             }
         }
+
         public class ProductType
         {
             public const string PersonalComputer = "1";
@@ -50,14 +52,14 @@
             public static List<ComboboxItem> GetComboboxList()
             {
                 return new List<ComboboxItem>
-            {
-                new ComboboxItem(PersonalComputer, GetDescription(PersonalComputer)),
-                new ComboboxItem(Microphone      , GetDescription(Microphone)),
-                new ComboboxItem(Screen          , GetDescription(Screen)),
-                new ComboboxItem(Speaker         , GetDescription(Speaker)),
-                new ComboboxItem(Keyboard        , GetDescription(Keyboard)),
-                new ComboboxItem(Mouse           , GetDescription(Mouse)),
-            };
+                {
+                    new ComboboxItem(PersonalComputer, GetDescription(PersonalComputer)),
+                    new ComboboxItem(Microphone      , GetDescription(Microphone)),
+                    new ComboboxItem(Screen          , GetDescription(Screen)),
+                    new ComboboxItem(Speaker         , GetDescription(Speaker)),
+                    new ComboboxItem(Keyboard        , GetDescription(Keyboard)),
+                    new ComboboxItem(Mouse           , GetDescription(Mouse)),
+                };
             }
         }
     }

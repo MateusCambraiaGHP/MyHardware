@@ -7,7 +7,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddInfrastructure();
 builder.Services.AddApplication();
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

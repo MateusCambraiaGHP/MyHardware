@@ -12,7 +12,7 @@ namespace MyHardware.Infrastructure.Common.Interfaces
         public DbSet<Supplier> Supplier { get; set; }
         public DbSet<SupplierProduct> SupplierProduct { get; set; }
         public DbSet<User> User { get; set; }
-        public int Save();
+        public Task<int> Save();
         DbSet<TEntity> Set<TEntity>() where TEntity : Entity;
     }
 }

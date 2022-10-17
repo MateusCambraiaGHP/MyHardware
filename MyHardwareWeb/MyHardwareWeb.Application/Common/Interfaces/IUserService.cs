@@ -1,17 +1,13 @@
 ﻿using MyHardware.ViewModel;
-using MyHardwareWeb.Domain.Models;
 
 namespace MyHardwareWeb.Application.Interfaces
 {
     public interface IUserService
     {
-        Task<UserViewModel> Save(UserViewModel userModel); 
-
-        UserViewModel Edit(UserViewModel userModel);
-
+        Task<UserViewModel> Save(UserViewModel model); 
+        Task<UserViewModel> Edit(UserViewModel model);
         Task<UserViewModel> FindById(int id);
-
-        Task<UserViewModel> GetAll();
+        Task<List<UserViewModel>> GetAll();
         Task<bool> ValidatePassword(string email, string password);
     }
 }

@@ -10,6 +10,5 @@ namespace MyHardware.Utils
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray());
             return errors;
         }
-
     }
 }

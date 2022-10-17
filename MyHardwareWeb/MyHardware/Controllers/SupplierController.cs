@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using static MyHardware.Utility.Constants;
 using MyHardware.ViewModel;
-using AutoMapper;
 using MyHardwareWeb.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -63,6 +62,19 @@ namespace MyHardware.Controllers
         {
             return PartialView("_InviteCustomerPartial");
         }
+
+        #region -------- Private Methods ----------
+        private void Validate(SupplierViewModel model)
+        {
+            if (String.IsNullOrEmpty(model.Name))
+            {
+                ModelState.AddModelError("Name", "Preencha o nome.");
+            }
+            return;
+        }
+        #endregion
+
+        #region ----------------Export--------------------
         //[HttpGet("export")]
         //[ValidateAntiForgeryToken]
         //public IActionResult Export()
@@ -70,5 +82,6 @@ namespace MyHardware.Controllers
         //    _supplierRepository.ExportAllSupplier();
         //    return Ok();
         //}
+        #endregion
     }
 }

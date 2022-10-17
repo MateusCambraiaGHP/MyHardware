@@ -6,6 +6,6 @@ namespace MyHardwareWeb.Infrastructure.Repository
 {
     public class ProductRepository : Repository<Product>, IProductRepository
     {
-        public ProductRepository(IApplicationDbContext context) : base(context){}
+        public ProductRepository(IApplicationDbContext context) : base(context) { }
     }
 }

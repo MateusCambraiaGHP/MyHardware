@@ -1,11 +1,12 @@
 ﻿using MyHardwareWeb.Domain.Models;
+
 namespace MyHardwareWeb.Application.Interfaces
 {
     public interface IAdressRepository
     {
-        Task Create(Adress adressModel);
-        Adress Update(Adress adressModel);
+        Task Create(Adress model);
+        Task<Adress> Update(Adress model);
         Task<Adress?> FindById(int id);
-        Task<IEnumerable<Adress>> GetAll();
+        Task<List<Adress>> GetAll();
     }
 }

@@ -17,6 +17,5 @@ namespace MyHardware.ViewModel
         public bool? IsEquals { get; set; }
         public Supplier? supplier { get; set; }
         public Customer? customer { get; set; }
-
     }
 }

@@ -2,7 +2,6 @@
 using MyHardware.Utils;
 using MyHardware.ViewModel;
 using MyHardwareWeb.Application.Interfaces;
-using MyHardwareWeb.Infrastructure.Services;
 
 namespace MyHardware.Controllers
 {

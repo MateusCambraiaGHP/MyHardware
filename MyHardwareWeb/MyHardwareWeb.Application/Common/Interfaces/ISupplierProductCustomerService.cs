@@ -1,6 +1,4 @@
-﻿
-using MyHardware.ViewModel;
-using MyHardwareWeb.Domain.Models;
+﻿using MyHardware.ViewModel;
 
 namespace MyHardwareWeb.Application.Interfaces
 {
@@ -8,6 +6,6 @@ namespace MyHardwareWeb.Application.Interfaces
     {
         Task<SupplierProductCustomerViewModel> FindById(int id);
 
-        Task<SupplierProductCustomerViewModel> GetAll();
+        Task<List<SupplierProductCustomerViewModel>> GetAll();
     }
 }

@@ -4,9 +4,9 @@ namespace MyHardwareWeb.Application.Interfaces
 {
     public interface ISupplierProductRepository
     {
-        Task Create(SupplierProduct adressModel);
-        SupplierProduct Update(SupplierProduct adressModel);
+        Task Create(SupplierProduct model);
+        Task<SupplierProduct> Update(SupplierProduct model);
         Task<SupplierProduct?> FindById(int id);
-        Task<IEnumerable<SupplierProduct>> GetAll();
+        Task<List<SupplierProduct>> GetAll();
     }
 }

@@ -6,6 +6,6 @@ namespace MyHardwareWeb.Infrastructure.Repository
 {
     public class CustomerRepository : Repository<Customer>, ICustomerRepository
     {
-        public CustomerRepository(IApplicationDbContext context) : base(context){}
+        public CustomerRepository(IApplicationDbContext context) : base(context) { }
     }
 }

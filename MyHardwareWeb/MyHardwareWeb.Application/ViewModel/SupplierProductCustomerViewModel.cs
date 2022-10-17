@@ -1,7 +1,4 @@
-﻿using MyHardwareWeb.Domain.Models;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MyHardware.ViewModel
+﻿namespace MyHardware.ViewModel
 {
     public class SupplierProductCustomerViewModel
     {
@@ -11,12 +8,9 @@ namespace MyHardware.ViewModel
         public int CustomerId { get; set; }
         public int PurcashePrice { get; set; }
         public int PurcasheQuantity { get; set; }
-        public Supplier supplier { get; set; }
-        public Product product { get; set; }
-        public Customer customer { get; set; }
-
-        [Column(TypeName = "datetime")]
+        public SupplierViewModel supplier { get; set; }
+        public ProductViewModel product { get; set; }
+        public CustomerViewModel customer { get; set; }
         public DateTime PurchaseData { get; set; }
-
     }
 }

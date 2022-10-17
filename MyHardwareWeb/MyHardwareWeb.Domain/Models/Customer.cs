@@ -4,7 +4,6 @@ namespace MyHardwareWeb.Domain.Models
 {
     public class Customer : Entity
     {
-
         [Column(TypeName = "varchar(45)")]
         public string? Name { get; set; }
 

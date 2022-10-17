@@ -4,10 +4,10 @@ namespace MyHardwareWeb.Application.Interfaces
 {
     public interface IUserRepository
     {
-        Task Create(User adressModel);
-        User Update(User adressModel);
+        Task Create(User model);
+        Task<User> Update(User model);
         Task<User?> FindById(int id);
-        Task<IEnumerable<User>> GetAll();
+        Task<List<User>> GetAll();
         Task<User> GetUserByEmailAndPassWord(string email, string password);
     }
 }

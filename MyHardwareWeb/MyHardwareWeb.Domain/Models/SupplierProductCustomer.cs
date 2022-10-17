@@ -14,6 +14,5 @@ namespace MyHardwareWeb.Domain.Models
 
         [Column(TypeName = "datetime")]
         public DateTime PurchaseData { get; set; }
-
     }
 }

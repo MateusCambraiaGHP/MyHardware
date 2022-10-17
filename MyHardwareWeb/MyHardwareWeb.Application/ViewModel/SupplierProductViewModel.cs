@@ -1,4 +1,6 @@
-﻿namespace MyHardware.ViewModel
+﻿using static MyHardware.Utility.Constants;
+
+namespace MyHardware.ViewModel
 {
     public class SupplierProductViewModel
     {
@@ -8,6 +10,8 @@
         public ProductViewModel product { get; set; }  
         public SupplierViewModel supplier { get; set; }
         public bool? IsNew { get { return Id == 0; } }
+        public string Active { get; set; }
+        public bool IsActive { get { return Active == StatusActive.Active; } }
         public bool? IsEquals { get; set; }
     }
 }

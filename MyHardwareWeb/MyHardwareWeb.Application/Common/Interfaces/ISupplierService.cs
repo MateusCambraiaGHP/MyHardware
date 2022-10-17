@@ -4,12 +4,9 @@ namespace MyHardwareWeb.Application.Interfaces
 {
     public interface ISupplierService
     {
-        Task<SupplierViewModel> Save(SupplierViewModel customerModel);
-
-        SupplierViewModel Edit(SupplierViewModel customerModel);
-
+        Task<SupplierViewModel> Save(SupplierViewModel model);
+        Task<SupplierViewModel> Edit(SupplierViewModel model);
         Task<SupplierViewModel> FindById(int id);
-
-        Task<SupplierViewModel> GetAll();
+        Task<List<SupplierViewModel>> GetAll();
     }
 }

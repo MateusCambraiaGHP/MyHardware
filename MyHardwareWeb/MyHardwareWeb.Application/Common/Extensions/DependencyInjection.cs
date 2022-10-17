@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MyHardwareWeb.Application.Interfaces;
 using System.Reflection;
 
 namespace MyHardwareWeb.Infrastructure.Common.Extensions

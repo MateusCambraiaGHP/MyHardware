@@ -7,7 +7,7 @@ namespace MyHardware.Infrastructure.Data
 {
     public class ApplicationMySqlDbContext : DbContext, IApplicationDbContext
     {
-        public IConfiguration _configuration { get; set; }
+        private IConfiguration _configuration { get; set; }
 
         public ApplicationMySqlDbContext(IConfiguration configuration)
         {
@@ -19,6 +19,7 @@ namespace MyHardware.Infrastructure.Data
             optionsBuilder.UseMySql(_configuration.GetConnectionString("DefaultConnection"),
                       ServerVersion.AutoDetect(_configuration.GetConnectionString("DefaultConnection")));
         }
+
         public DbSet<Product> Product { get; set; }
         public DbSet<SupplierProductCustomer> SupplierProductCustomer { get; set; }
         public DbSet<Adress> Adress { get; set; }
@@ -27,10 +28,11 @@ namespace MyHardware.Infrastructure.Data
         public DbSet<SupplierProduct> SupplierProduct { get; set; }
         public DbSet<User> User { get; set; }
 
-        public int Save()
+        public async Task<int>  Save()
         {
-            return SaveChanges();
+            return await SaveChangesAsync();
         }
+
         public new DbSet<TEntity> Set<TEntity>() where TEntity : Entity
         {
             return base.Set<TEntity>();

@@ -11,7 +11,8 @@ namespace MyHardwareWeb.Infrastructure.Repository
         
         public async Task<User> GetUserByEmailAndPassWord(string email, string password)
         {
-            var currentEntity = await _dbSet.AsNoTracking().Where(u => u.Email == email && u.Password == password).FirstOrDefaultAsync();
+            var currentEntity = await _dbSet.AsNoTracking()
+                .Where(u => u.Email == email && u.Password == password).FirstOrDefaultAsync();
             return currentEntity;
         }
     }

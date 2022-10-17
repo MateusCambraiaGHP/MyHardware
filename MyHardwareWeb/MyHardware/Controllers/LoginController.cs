@@ -40,11 +40,6 @@ namespace MyHardware.Controllers
             return Ok();
         }
 
-        public IActionResult GetRegisterDialog()
-        {
-            return PartialView("_RegisterUserPartial"); 
-        }
-
         [HttpPost("save")]
         [ValidateAntiForgeryToken]
         public IActionResult Save(UserViewModel userModel)
@@ -78,13 +73,10 @@ namespace MyHardware.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpGet("export")]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Export()
-        //{
-        //    _userRepository.ExportAllUsers();
-        //    return Ok();
-        //}
+        public IActionResult GetRegisterDialog()
+        {
+            return PartialView("_RegisterUserPartial"); 
+        }
 
         #region ----------Private Methods-----------
         private async Task Validate(UserViewModel model)
@@ -108,6 +100,16 @@ namespace MyHardware.Controllers
 
             return;
         }
+        #endregion
+
+        #region ------------Export------------
+        //[HttpGet("export")]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Export()
+        //{
+        //    _userRepository.ExportAllUsers();
+        //    return Ok();
+        //}
         #endregion
     }
 }

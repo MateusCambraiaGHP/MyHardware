@@ -1,5 +1,4 @@
-﻿
-namespace MyHardware.ViewModel
+﻿namespace MyHardware.ViewModel
 {
     public class UserViewModel
     {

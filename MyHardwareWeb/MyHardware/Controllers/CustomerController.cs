@@ -50,6 +50,18 @@ namespace MyHardware.Controllers
             return RedirectToAction("Index");
         }
 
+        #region -------- Private Methods ----------
+        private void Validate(CustomerViewModel model)
+        {
+            if (String.IsNullOrEmpty(model.Name))
+            {
+                ModelState.AddModelError("Name", "Preencha o nome.");
+            }
+            return;
+        }
+        #endregion
+
+        #region --------------Export--------------
         //[HttpGet("export")]
         //[ValidateAntiForgeryToken]
         //public IActionResult Export()
@@ -57,5 +69,6 @@ namespace MyHardware.Controllers
         //    _customerService.ExportAllCustomer();
         //    return Ok();
         //}
+        #endregion
     }
 }

@@ -43,7 +43,7 @@ namespace MyHardware.Controllers
                 return NotFound();
             }
             var currentProduct = _productService.FindById(id);
-            if (currentProduct == null)
+            if (currentProduct is null)
             {
                 return NotFound();
             }
@@ -59,6 +59,18 @@ namespace MyHardware.Controllers
             return RedirectToAction("Index");
         }
 
+        #region -------- Private Methods ----------
+        private void Validate(ProductViewModel model)
+        {
+            if (String.IsNullOrEmpty(model.Name))
+            {
+                ModelState.AddModelError("Name", "Preencha o nome.");
+            }
+            return;
+        }
+        #endregion
+
+        #region -----------------Export---------------------
         //[HttpGet("export")]
         //[ValidateAntiForgeryToken]
         //public IActionResult Export()
@@ -66,5 +78,6 @@ namespace MyHardware.Controllers
         //    _productRepository.ExportAllProducts();
         //    return Ok();
         //}
+        #endregion
     }
 }

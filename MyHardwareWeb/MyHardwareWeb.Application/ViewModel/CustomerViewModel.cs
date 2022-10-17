@@ -11,6 +11,5 @@ namespace MyHardware.ViewModel
         public bool? IsActive { get { return Active == StatusActive.Active; } }
         public bool? IsNew { get { return Id == 0; } }
         public bool? IsEquals { get; set; }
-
     }
 }

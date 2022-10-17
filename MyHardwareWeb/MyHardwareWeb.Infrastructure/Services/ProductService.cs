@@ -16,6 +16,7 @@ namespace MyHardwareWeb.Infrastructure.Services
             _mapper = mapper;
             _productRepository = productRepository;
         }
+
         public async Task<ProductViewModel> Save(ProductViewModel productModel)
         {
             var productMap = _mapper.Map<ProductViewModel, Product>(productModel);
@@ -33,14 +34,14 @@ namespace MyHardwareWeb.Infrastructure.Services
         public async Task<ProductViewModel> FindById(int id)
         {
             var currentProduct = await _productRepository.FindById(id) ?? new Product();
-            var productMap = _mapper.Map<Product, ProductViewModel>(currentProduct);
+            var productMap     = _mapper.Map<Product, ProductViewModel>(currentProduct);
             return productMap;
         }
 
-        public async Task<ProductViewModel> GetAll()
+        public async Task<List<ProductViewModel>> GetAll()
         {
-            var listProduct = await _productRepository.GetAll() ?? new List<Product>();
-            var listProductMap = _mapper.Map<IEnumerable<Product>, ProductViewModel>(listProduct);
+            var listProduct    = await _productRepository.GetAll() ?? new List<Product>();
+            var listProductMap = _mapper.Map<List<ProductViewModel>>(listProduct);
             return listProductMap;
         }
     }

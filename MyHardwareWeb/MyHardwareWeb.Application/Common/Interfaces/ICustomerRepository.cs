@@ -4,9 +4,9 @@ namespace MyHardwareWeb.Application.Interfaces
 {
     public interface ICustomerRepository 
     {
-        Task Create(Customer adressModel);
-        Customer Update(Customer adressModel);
+        Task Create(Customer model);
+        Task<Customer> Update(Customer model);
         Task<Customer?> FindById(int id);
-        Task<IEnumerable<Customer>> GetAll();
+        Task<List<Customer>> GetAll();
     }
 }
